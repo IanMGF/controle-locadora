@@ -1,7 +1,7 @@
 public interface ICliente {
 	String getNomeCompleto();
 	String getCPF();
-	String getNascimento();
+	Date getNascimento();
 	String getEmail();
 	String getCelular();
 	String getContato();

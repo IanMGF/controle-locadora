@@ -1,5 +1,5 @@
 public interface IFrota {
 	IVeiculo[] getVeiculos();
-	void addVeiculo();
-	void removeVeiculo();
+	void addVeiculo(IVeiculo veiculo);
+	void removeVeiculo(IVeiculo veiculo);
 }
