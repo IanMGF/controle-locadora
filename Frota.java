@@ -20,4 +20,12 @@ public class Frota implements IFrota{
                 .findFirst()
                 .ifPresent(v -> v.setStatus(motivo));
     }
+
+    @Override
+    public IVeiculo getVeiculoByPlaca(String placa) {
+        return veiculos.stream()
+                        .filter(v -> v.getPlaca().equals(placa))
+                        .findFirst()
+                        .orElse(null);
+    }
 }

@@ -50,7 +50,7 @@ public class VeiculoUseCases{
         if(placa == null){
             return false;
         }else{
-            IVeiculo veiculo;
+            IVeiculo veiculo = frota.getVeiculoByPlaca(placa);
             
             for(int i = 0; i < veiculosNaFrota.length; i++){
                 if((veiculosNaFrota[i].getPlaca()).equals(placa)){
