@@ -78,6 +78,8 @@ public class ClientUseCases {
 		}
 
 		// Verificar se os dígitos verificadores estão corretos
-		return Character.getNumericValue(cpf.charAt(9)) == digito1 && Character.getNumericValue(cpf.charAt(10)) == digito2;
+		boolean primeiroDigitoCorreto = Character.getNumericValue(cpf.charAt(9)) == digito1;
+		boolean segundoDigitoCorreto = Character.getNumericValue(cpf.charAt(10)) == digito2;
+		return  primeiroDigitoCorreto && segundoDigitoCorreto;
 	}
 }
