@@ -5,12 +5,10 @@ public class ClientUseCases {
 	public static LinkedList<ICliente> clients = new LinkedList<>();
 
 	public static ICliente encontrarPorCPF(String cpf){
-		for(ICliente client: clients){
-			if(client.getCPF().equals(cpf)){
-				return client;
-			}
-		}
-		return null;
+		return clients.stream()
+				.filter(client -> client.getCPF().equals(cpf))
+				.findFirst()
+				.orElse(null);
 	}
 
 	// Valida as informações, caso estejam erradas, causa um erro
@@ -19,7 +17,9 @@ public class ClientUseCases {
 			// Erro: Já cadastrado
 		}
 
-		// Validar CPF
+		if(!validarCPF(cpf)){
+			// Erro: CPF inválido
+		}
 
 		LocalDate localDate = LocalDate.now();
 		boolean isOver18 = dataDeNascimento.plusYears(18).isBefore(localDate);
@@ -46,5 +46,38 @@ public class ClientUseCases {
 			);
 
 		clients.add(client);
+	}
+
+	private static boolean validarCPF(String cpf) {
+		// Remover caracteres não numéricos
+		cpf = cpf.replaceAll("[^0-9]", "");
+
+		// Verificar se o CPF tem 11 dígitos
+		if (cpf.length() != 11) {
+			return false;
+		}
+
+		// Calcular o primeiro dígito verificador
+		int soma = 0;
+		for (int i = 0; i < 9; i++) {
+			soma += Character.getNumericValue(cpf.charAt(i)) * (10 - i);
+		}
+		int digito1 = 11 - (soma % 11);
+		if (digito1 > 9) {
+			digito1 = 0;
+		}
+
+		// Calcular o segundo dígito verificador
+		soma = 0;
+		for (int i = 0; i < 10; i++) {
+			soma += Character.getNumericValue(cpf.charAt(i)) * (11 - i);
+		}
+		int digito2 = 11 - (soma % 11);
+		if (digito2 > 9) {
+			digito2 = 0;
+		}
+
+		// Verificar se os dígitos verificadores estão corretos
+		return Character.getNumericValue(cpf.charAt(9)) == digito1 && Character.getNumericValue(cpf.charAt(10)) == digito2;
 	}
 }
