@@ -4,5 +4,6 @@ public interface IVeiculo {
 	String getModelo();
 	String getCor();
 	String getAno();
+	String getGrupo();
 	String getStatus();
 }
