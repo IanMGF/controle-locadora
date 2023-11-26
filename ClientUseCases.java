@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedList;
 
 public class ClientUseCases {
@@ -31,7 +32,7 @@ public class ClientUseCases {
 	public static void registrarNovoCliente(
 			String nomeCompleto,
 			String cpf,
-			String nascimento,
+			Date nascimento,
 			String email,
 			String celular,
 			String contato
