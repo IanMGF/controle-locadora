@@ -55,17 +55,15 @@ public class VeiculoUseCases{
         frota.addVeiculo(veiculo);
     }
 
-    public static void deleteVeiculo(String placa, String motivo) throws MissingException, CurrentlyRentedException{
+    public static void deleteVeiculo(String placa, String motivo) throws MissingException, CurrentlyRentedException, InvalidException{
         
         if(placa == null){
             throw new MissingException("placa");
         }else{
             IVeiculo veiculo = frota.getVeiculoByPlaca(placa);
             
-            for(int i = 0; i < veiculosNaFrota.length; i++){
-                if((veiculosNaFrota[i].getPlaca()).equals(placa)){
-                    veiculo = veiculosNaFrota[i];
-                }
+            if(veiculo == null){
+                throw new InvalidException(placa);
             }
 
             if((veiculo.getStatus()).equals("locado")){

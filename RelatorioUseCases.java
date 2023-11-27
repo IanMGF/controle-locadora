@@ -23,7 +23,7 @@ public class RelatorioUseCases {
             
         }
 
-        String relatorio = clientesStr + veiculoStr + loc_resStr;
+        String relatorio = (clientesStr + veiculoStr + loc_resStr);
         return relatorio;
     }
 
