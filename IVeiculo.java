@@ -6,4 +6,6 @@ public interface IVeiculo {
 	String getAno();
 	String getGrupo();
 	String getStatus();
+
+	void setStatus(String motivo);
 }

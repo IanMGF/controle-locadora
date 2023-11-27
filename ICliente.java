@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public interface ICliente {
 	String getNomeCompleto();
 	String getCPF();
