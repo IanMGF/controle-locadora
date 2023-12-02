@@ -1,3 +1,7 @@
+import exceptions.CPFAlreadyRegisteredException;
+import exceptions.InvalidCPFException;
+import exceptions.NotOldEnoughException;
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedList;
@@ -13,19 +17,21 @@ public class ClientUseCases {
 	}
 
 	// Valida as informações, caso estejam erradas, causa um erro
-	public static void validarInfo(String cpf, LocalDate dataDeNascimento, String email){
+	public static void validarInfo(String cpf, LocalDate dataDeNascimento, String email)
+			throws CPFAlreadyRegisteredException, InvalidCPFException, NotOldEnoughException
+	{
 		if(encontrarPorCPF(cpf) != null){
-			// Erro: Já cadastrado
+			throw new CPFAlreadyRegisteredException(cpf);
 		}
 
 		if(!validarCPF(cpf)){
-			// Erro: CPF inválido
+			throw new InvalidCPFException(cpf);
 		}
 
 		LocalDate localDate = LocalDate.now();
 		boolean isOver18 = dataDeNascimento.plusYears(18).isBefore(localDate);
 		if(!isOver18){
-			// Erro: Menor de idade
+			throw new NotOldEnoughException();
 		}
 	}
 
