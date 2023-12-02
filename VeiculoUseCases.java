@@ -1,68 +1,75 @@
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import Exceptions.*;
+
 public class VeiculoUseCases{
+    
     private static IFrota frota = new Frota();
     private static IVeiculo[] veiculosNaFrota = frota.getVeiculos();
 
 
-    public static boolean newVeiculo(String placa, String marca, String modelo, String cor, String ano, String grupo){
+    public static void newVeiculo(String placa, String marca, String modelo, String cor, String ano, String grupo) throws MissingException, InvalidException, AlreadyAddedExeception{
         Calendar cal = new GregorianCalendar();
        
         //Checando strings
         if(placa == null){
-            return false;
+            throw new MissingException("placa");
         }
 
         for(int i = 0; i < veiculosNaFrota.length; i++){
             if((veiculosNaFrota[i].getPlaca()).equals(placa)){
-                return false;
+                throw new AlreadyAddedExeception("placa");
             }
         }
 
         if(marca == null){
-            return false;
+            throw new MissingException("marca");
         }
 
         if(modelo == null){
-            return false;
+            throw new MissingException("modelo");
         }
 
         if(cor == null){
-            return false;
+            throw new MissingException("cor");
+        }
+
+        if(ano == null){
+            throw new MissingException("ano");
         }
 
         if(Integer.parseInt(ano) < 1886 || Integer.parseInt(ano) > cal.get(Calendar.YEAR)){
-            return false;
+            throw new InvalidException("ano");
         }
 
+        if(grupo == null){
+            throw new MissingException("grupo");
+        } 
+
         if(!(grupo.equals("basico")||grupo.equals("padrao")||grupo.equals("premium"))){
-            return false;
+            throw new InvalidException("grupo");
         }
 
         IVeiculo veiculo = new Veiculo(placa, marca, modelo, cor, ano, grupo, "disponivel");
         frota.addVeiculo(veiculo);
-        return true;
     }
 
-    public static boolean deleteVeiculo(String placa, String motivo){
+    public static void deleteVeiculo(String placa, String motivo) throws MissingException, CurrentlyRentedException, InvalidException{
         
         if(placa == null){
-            return false;
+            throw new MissingException("placa");
         }else{
             IVeiculo veiculo = frota.getVeiculoByPlaca(placa);
             
-            for(int i = 0; i < veiculosNaFrota.length; i++){
-                if((veiculosNaFrota[i].getPlaca()).equals(placa)){
-                    veiculo = veiculosNaFrota[i];
-                }
+            if(veiculo == null){
+                throw new InvalidException(placa);
             }
 
             if((veiculo.getStatus()).equals("locado")){
-                return false;
+                throw new CurrentlyRentedException(veiculo.getPlaca());
             }else{
                 frota.removeVeiculo(veiculo, motivo);
-                return true;
             }
             
         }

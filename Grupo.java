@@ -7,16 +7,15 @@ public class Grupo implements IGrupo{
     private static float[] premium = new float[5];
 
     //Declaração de variáveis para alterar arquivo de texto
-    String basicoString, padraoString, premiumString;
-    String[] basicoArray = new String[6];
-    String[] padraoArray = new String[6];
-    String[] premiumArray = new String[6];
-    BufferedReader in;
-    BufferedWriter out;
+    private static String basicoString, padraoString, premiumString;
+    private static String[] basicoArray = new String[6];
+    private static String[] padraoArray = new String[6];
+    private static String[] premiumArray = new String[6];
+    private static BufferedReader in;
+    private static BufferedWriter out;
 
-    public Grupo(){
-        try{
-            in = new BufferedReader(new FileReader("texts/grupos.txt"));
+    public static void load() throws FileNotFoundException, IOException{
+        in = new BufferedReader(new FileReader("texts/grupos.txt"));
 
             basicoString = in.readLine();
             padraoString = in.readLine();
@@ -33,13 +32,16 @@ public class Grupo implements IGrupo{
             }
             
             in.close();
-        }catch(FileNotFoundException fnfe){
-            System.err.println("Arquivo não encontrado: " + fnfe);
-        }catch(IOException ioe){
-            System.err.println("Erro leitura/escrita: " + ioe);
-        }
+    }
 
+    public static void save() throws FileNotFoundException, IOException{
+        String txt = new String("basico\t" + basico[0] + "\t" + basico[1] + "\t" + basico[2] + "\t" + basico[3] + "\t" + basico[4] + "\n" + 
+                                "padrao\t" + padrao[0] + "\t" + padrao[1] + "\t" + padrao[2] + "\t" + padrao[3] + "\t" + padrao[4] + "\n" + 
+                                "premium\t" + premium[0] + "\t" + premium[1] + "\t" + premium[2] + "\t" + premium[3] + "\t" + premium[4] + "\n");
 
+            out = new BufferedWriter(new FileWriter("texts/grupos.txt"));
+            out.write(txt);
+            out.close();
     }
 
     public float getValorDiaria(String nome){
@@ -63,21 +65,18 @@ public class Grupo implements IGrupo{
                 case "basico":
                     if(valor>=0){
                         Grupo.basico[0] = valor;
-                        writeTxt();
                     }
                     break;
 
                 case "padrao":
                     if(valor>=0){
                         Grupo.padrao[0] = valor;
-                        writeTxt();
                     }
                     break;
 
                 case "premium":
                     if(valor>=0){
                         Grupo.premium[0] = valor;
-                        writeTxt();
                     }
                     break;
             
@@ -107,21 +106,18 @@ public class Grupo implements IGrupo{
             case "basico":
                 if(valor>=0){
                     Grupo.basico[1] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "padrao":
                 if(valor>=0){
                     Grupo.padrao[1] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "premium":
                 if(valor>=0){
                     Grupo.premium[1] = valor;
-                    writeTxt();
                 }
                 break;
         
@@ -130,7 +126,7 @@ public class Grupo implements IGrupo{
         }
     }
 
-        public float getValorLimpezaExt(String nome){
+    public float getValorLimpezaExt(String nome){
         switch (nome) {
             case "basico":
                 return basico[2];
@@ -151,21 +147,18 @@ public class Grupo implements IGrupo{
             case "basico":
                 if(valor>=0){
                     Grupo.basico[2] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "padrao":
                 if(valor>=0){
                     Grupo.padrao[2] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "premium":
                 if(valor>=0){
                     Grupo.premium[2] = valor;
-                    writeTxt();
                 }
                 break;
         
@@ -174,7 +167,7 @@ public class Grupo implements IGrupo{
         }
     }
 
-            public float getValorLimpezaInt(String nome){
+    public float getValorLimpezaInt(String nome){
         switch (nome) {
             case "basico":
                 return basico[3];
@@ -195,21 +188,18 @@ public class Grupo implements IGrupo{
             case "basico":
                 if(valor>=0){
                     Grupo.basico[3] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "padrao":
                 if(valor>=0){
                     Grupo.padrao[3] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "premium":
                 if(valor>=0){
                     Grupo.premium[3] = valor;
-                    writeTxt();
                 }
                 break;
         
@@ -218,7 +208,7 @@ public class Grupo implements IGrupo{
         }
     }
 
-            public float getDiariaSeguro(String nome){
+    public float getDiariaSeguro(String nome){
         switch (nome) {
             case "basico":
                 return basico[4];
@@ -239,21 +229,18 @@ public class Grupo implements IGrupo{
             case "basico":
                 if(valor>=0){
                     Grupo.basico[4] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "padrao":
                 if(valor>=0){
                     Grupo.padrao[4] = valor;
-                    writeTxt();
                 }
                 break;
 
             case "premium":
                 if(valor>=0){
                     Grupo.premium[4] = valor;
-                    writeTxt();
                 }
                 break;
         
@@ -262,21 +249,6 @@ public class Grupo implements IGrupo{
         }
     }
 
-    public void writeTxt(){
-        String txt = new String("basico\t" + basico[0] + "\t" + basico[1] + "\t" + basico[2] + "\t" + basico[3] + "\t" + basico[4] + "\n" + 
-                                "padrao\t" + padrao[0] + "\t" + padrao[1] + "\t" + padrao[2] + "\t" + padrao[3] + "\t" + padrao[4] + "\n" + 
-                                "premium\t" + premium[0] + "\t" + premium[1] + "\t" + premium[2] + "\t" + premium[3] + "\t" + premium[4] + "\n");
-        try{
-            out = new BufferedWriter(new FileWriter("texts/grupos.txt"));
-
-            out.write(txt);
-
-            out.close();
-        }catch(FileNotFoundException fnfe){
-            System.err.println("Arquivo não encontrado: " + fnfe);
-        }catch(IOException ioe){
-            System.err.println("Erro leitura/escrita: " + ioe);
-        }
-    }
+    
 
 }
