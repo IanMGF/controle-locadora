@@ -70,9 +70,7 @@ public class ClientUseCases {
 			soma += Character.getNumericValue(cpf.charAt(i)) * (10 - i);
 		}
 		int digito1 = 11 - (soma % 11);
-		if (digito1 > 9) {
-			digito1 = 0;
-		}
+		digito1 = (digito1 > 9) ? 0 : digito1;
 
 		// Calcular o segundo dígito verificador
 		soma = 0;
@@ -80,9 +78,7 @@ public class ClientUseCases {
 			soma += Character.getNumericValue(cpf.charAt(i)) * (11 - i);
 		}
 		int digito2 = 11 - (soma % 11);
-		if (digito2 > 9) {
-			digito2 = 0;
-		}
+		digito2 = (digito2 > 9) ? 0 : digito2;
 
 		// Verificar se os dígitos verificadores estão corretos
 		boolean primeiroDigitoCorreto = Character.getNumericValue(cpf.charAt(9)) == digito1;
