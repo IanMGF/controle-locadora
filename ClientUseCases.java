@@ -7,10 +7,10 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class ClientUseCases {
-	public static LinkedList<ICliente> clients = new LinkedList<>();
-
+	private static ClientDatabase database;
 	public static ICliente encontrarPorCPF(String cpf){
-		return clients.stream()
+		return database.getClientsCopy()
+				.stream()
 				.filter(client -> client.getCPF().equals(cpf))
 				.findFirst()
 				.orElse(null);
@@ -52,7 +52,8 @@ public class ClientUseCases {
 				contato
 			);
 
-		clients.add(client);
+		database.add(client);
+		database.saveToFile();
 	}
 
 	private static boolean validarCPF(String cpf) {
