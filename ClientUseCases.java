@@ -1,6 +1,6 @@
-import exceptions.CPFAlreadyRegisteredException;
-import exceptions.InvalidCPFException;
-import exceptions.NotOldEnoughException;
+import Exceptions.CPFAlreadyRegisteredException;
+import Exceptions.InvalidCPFException;
+import Exceptions.NotOldEnoughException;
 
 import java.time.LocalDate;
 import java.util.Date;
