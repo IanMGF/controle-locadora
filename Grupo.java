@@ -1,6 +1,17 @@
 import java.io.*;
 
 public class Grupo implements IGrupo{
+    private float valorDiaria, valorTanque, valorLimpezaExt, valorLimpezaInt, diariaSeguro;
+    private String nome;
+
+    public Grupo(String nome, float valorDiaria, float valorTanque, float valorLimpezaExt, float valorLimpezaInt, float diariaSeguro){
+        this.nome = nome;
+        this.valorDiaria = valorDiaria;
+        this.valorTanque = valorTanque;
+        this.valorLimpezaExt = valorLimpezaExt;
+        this.valorLimpezaInt = valorLimpezaInt;
+        this.diariaSeguro = diariaSeguro;
+    }
     //Declaração de arrays utilizados para armazenar valores referentes aos grupos
     private static float[] basico = new float[5];
     private static float[] padrao = new float[5];
