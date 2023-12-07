@@ -4,6 +4,8 @@
  */
 package visao;
 
+import logic.RelatorioUseCases;
+
 /**
  *
  * @author nat_p
@@ -106,7 +108,15 @@ public class GerarRelatorio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        boolean clientes = false;
+        boolean veiculos = false;
+        boolean loc_res = false;
+
+        RelatorioUseCases.getRelatorio(
+                clientes,
+                veiculos,
+                loc_res
+        );
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fecharJanelaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaCVActionPerformed

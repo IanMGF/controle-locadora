@@ -3,6 +3,10 @@ package logic;
 import java.io.*;
 
 public class Grupo implements IGrupo{
+    public static IGrupo grupoBasico;
+    public static IGrupo grupoPadrao;
+    public static IGrupo grupoPremium;
+
     private float valorDiaria, valorTanque, valorLimpezaExt, valorLimpezaInt, diariaSeguro;
     private String nome;
 

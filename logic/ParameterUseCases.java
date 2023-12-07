@@ -37,7 +37,11 @@ public class ParameterUseCases{
             IGrupo basico = new Grupo("basico", basicoData[0], basicoData[1], basicoData[2], basicoData[3], basicoData[4]);
             IGrupo padrao = new Grupo("padrao", padraoData[0], padraoData[1], padraoData[2], padraoData[3], padraoData[4]);
             IGrupo premium = new Grupo("premium", premiumData[0], premiumData[1], premiumData[2], premiumData[3], premiumData[4]);
-            
+
+            Grupo.grupoBasico = basico;
+            Grupo.grupoPadrao = padrao;
+            Grupo.grupoPremium = premium;
+
             in.close();
     }
 }

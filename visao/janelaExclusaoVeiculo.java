@@ -17,7 +17,6 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
      */
     public janelaExclusaoVeiculo() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
