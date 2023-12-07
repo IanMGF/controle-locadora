@@ -91,6 +91,8 @@ public class ClientDatabase implements IClientDatabase{
                             lines[4],
                             ""
                     );
+
+                    add(cliente);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
