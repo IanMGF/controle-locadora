@@ -41,7 +41,7 @@ public class CadastroNovoVeiculo extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         fecharJanelaCV.setText("Fechar");
         fecharJanelaCV.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class CadastroNovoVeiculo extends javax.swing.JInternalFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton2.setLabel("Adicionar Veículo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {

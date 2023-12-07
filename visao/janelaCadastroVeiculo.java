@@ -4,20 +4,12 @@
  */
 package visao;
 
-import logic.Frota;
-import logic.VeiculoUseCases;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  *
  * @author nat_p
  */
 public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
-    //logic.VeiculoUseCases veiculo = new logic.VeiculoUseCases();
+    //VeiculoUseCases veiculo = new VeiculoUseCases();
     
     /**
      * Creates new form janelaCadastroVeiculo
@@ -229,23 +221,9 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String placa = escrevaPlaca.getText();
-        String marca = jTextField2.getText();
-        String modelo = jTextField3.getText();
-        String cor = jTextField4.getText();
-        String ano = jTextField5.getText();
-        String grupo = jTextField6.getText();
+        // TODO add your handling code here:
+            System.exit(0);
 
-        Frota.load();
-        VeiculoUseCases.newVeiculo(
-                placa,
-                marca,
-                modelo,
-                cor,
-                ano,
-                grupo
-        );
-        Frota.save();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fecharJanelaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaCVActionPerformed
