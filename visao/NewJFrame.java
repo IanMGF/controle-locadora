@@ -5,7 +5,7 @@
 package visao;
 
 import javax.swing.JFrame;
-
+import javax.swing.*;
 public class NewJFrame extends javax.swing.JFrame {
 
     // Construtor 
@@ -112,7 +112,9 @@ public class NewJFrame extends javax.swing.JFrame {
     }                                           
 
     private void gerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {                                            
-        // TODO add your handling code here:
+        GerarRelatorio Relatorio = new GerarRelatorio();
+        jDesktopPane1.add(Relatorio);
+        Relatorio.setVisible(true);
     }                                           
 
     /**
