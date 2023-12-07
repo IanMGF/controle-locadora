@@ -11,8 +11,7 @@ public class RelatorioUseCases {
         }
         
         if(veiculo){
-            IFrota frota = new Frota();
-            IVeiculo[] veiculos = frota.getVeiculos();
+            IVeiculo[] veiculos = Frota.getVeiculos();
             veiculoStr = "Relatorios de Clientes: \n";
 
             for(int i = 0; i < veiculos.length; i++){

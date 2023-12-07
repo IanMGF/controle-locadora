@@ -4,6 +4,7 @@
  */
 package visao;
 
+import logic.Frota;
 import logic.VeiculoUseCases;
 
 import java.text.DateFormat;
@@ -235,6 +236,7 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
         String ano = jTextField5.getText();
         String grupo = jTextField6.getText();
 
+        Frota.load();
         VeiculoUseCases.newVeiculo(
                 placa,
                 marca,
@@ -243,6 +245,7 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
                 ano,
                 grupo
         );
+        Frota.save();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fecharJanelaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaCVActionPerformed

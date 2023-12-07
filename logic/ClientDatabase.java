@@ -11,26 +11,22 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ClientDatabase implements IClientDatabase{
-    private List<ICliente> clientList = new LinkedList<>();
+public class ClientDatabase {
+    private static List<ICliente> clientList = new LinkedList<>();
 
-    @Override
-    public List<ICliente> getClientsCopy() {
+    public static List<ICliente> getClientsCopy() {
         return new LinkedList<>(clientList);
     }
 
-    @Override
-    public void add(ICliente cliente) {
+    public static void add(ICliente cliente) {
         clientList.add(cliente);
     }
 
-    @Override
-    public void remove(ICliente cliente) {
+    public static void remove(ICliente cliente) {
         clientList.remove(cliente);
     }
 
-    @Override
-    public void saveToFile() {
+    public static void saveToFile() {
         String fileName = "registro_clientes.txt";
         StringBuilder fileData = new StringBuilder();
 
@@ -63,8 +59,7 @@ public class ClientDatabase implements IClientDatabase{
         }
     }
 
-    @Override
-    public void loadFromFile() {
+    public static void loadFromFile() {
         String fileName = "registro_clientes.txt";
 
         clientList.clear();

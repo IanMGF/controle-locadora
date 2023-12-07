@@ -3,6 +3,7 @@ package logic;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -10,36 +11,32 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
-public class Frota implements IFrota{
-    private LinkedList<IVeiculo> veiculos = new LinkedList<>();
+public class Frota{
+    private final static LinkedList<IVeiculo> veiculos = new LinkedList<>();
 
-    @Override
-    public IVeiculo[] getVeiculos() {
+    public static IVeiculo[] getVeiculos() {
         return veiculos.toArray(IVeiculo[]::new);
     }
 
-    @Override
-    public void addVeiculo(IVeiculo veiculo) {
+    public static void addVeiculo(IVeiculo veiculo) {
         veiculos.add(veiculo);
     }
 
-    @Override
-    public void removeVeiculo(IVeiculo veiculo, String motivo) {
+    public static void removeVeiculo(IVeiculo veiculo, String motivo) {
         veiculos.stream()
                 .filter(v -> v.equals(veiculo))
                 .findFirst()
                 .ifPresent(v -> v.setStatus(motivo));
     }
 
-    @Override
-    public IVeiculo getVeiculoByPlaca(String placa) {
+    public static IVeiculo getVeiculoByPlaca(String placa) {
         return veiculos.stream()
                         .filter(v -> v.getPlaca().equals(placa))
                         .findFirst()
                         .orElse(null);
     }
 
-    public void save(){
+    public static void save(){
         String fileName = "registro_veiculos.txt";
         StringBuilder fileData = new StringBuilder();
 
@@ -61,7 +58,7 @@ public class Frota implements IFrota{
         }
 
         try {
-            if (!Files.exists(Paths.get("registro_clientes.txt"))) {
+            if (!Files.exists(Paths.get(fileName))) {
                 Files.createFile(Paths.get(fileName));
                 System.out.println("File created: " + fileName);
             }
@@ -76,7 +73,7 @@ public class Frota implements IFrota{
         }
     }
 
-    public void load(){
+    public static void load(){
         String fileName = "registro_veiculos.txt";
 
         veiculos.clear();
@@ -87,29 +84,20 @@ public class Frota implements IFrota{
                 if(line.equals(""))
                     return;
                 String[] lines = line.split("\t");
+                Veiculo veiculo = new Veiculo(
+                        lines[0],
+                        lines[1],
+                        lines[2],
+                        lines[3],
+                        lines[4],
+                        lines[5],
+                        lines[6]
+                );
 
-                String startDateString = lines[2];
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                Date startDate;
-                try {
-                    startDate = df.parse(startDateString);
-                    String newDateString = df.format(startDate);
-                    System.out.println(newDateString);
-                    Veiculo veiculo = new Veiculo(
-                            lines[0],
-                            lines[1],
-                            lines[2],
-                            lines[3],
-                            lines[4],
-                            lines[5],
-                            lines[6]
-                    );
-
-                    addVeiculo(veiculo);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                addVeiculo(veiculo);
             });
+
+        } catch (NoSuchFileException ignoredNoSuchFileException) {
 
         } catch (IOException e) {
             e.printStackTrace();

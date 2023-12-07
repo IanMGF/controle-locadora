@@ -8,9 +8,8 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class ClientUseCases {
-	private static IClientDatabase database;
 	public static ICliente encontrarPorCPF(String cpf){
-		return database.getClientsCopy()
+		return ClientDatabase.getClientsCopy()
 				.stream()
 				.filter(client -> client.getCPF().equals(cpf))
 				.findFirst()
@@ -53,8 +52,8 @@ public class ClientUseCases {
 				contato
 			);
 
-		database.add(client);
-		database.saveToFile();
+		ClientDatabase.add(client);
+		ClientDatabase.saveToFile();
 	}
 
 	private static boolean validarCPF(String cpf) {

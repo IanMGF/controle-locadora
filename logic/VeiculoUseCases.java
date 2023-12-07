@@ -6,11 +6,6 @@ import java.util.GregorianCalendar;
 import exceptions.*;
 
 public class VeiculoUseCases{
-    
-    private static IFrota frota = new Frota();
-    private static IVeiculo[] veiculosNaFrota = frota.getVeiculos();
-
-
     public static void newVeiculo(String placa, String marca, String modelo, String cor, String ano, String grupo) throws MissingException, InvalidException, AlreadyAddedExeception{
         Calendar cal = new GregorianCalendar();
        
@@ -18,7 +13,7 @@ public class VeiculoUseCases{
         if(placa == null){
             throw new MissingException("placa");
         }
-
+        IVeiculo[] veiculosNaFrota = Frota.getVeiculos();
         for(int i = 0; i < veiculosNaFrota.length; i++){
             if((veiculosNaFrota[i].getPlaca()).equals(placa)){
                 throw new AlreadyAddedExeception("placa");
@@ -54,7 +49,7 @@ public class VeiculoUseCases{
         }
 
         IVeiculo veiculo = new Veiculo(placa, marca, modelo, cor, ano, grupo, "disponivel");
-        frota.addVeiculo(veiculo);
+        Frota.addVeiculo(veiculo);
 
         System.out.println("Veículo adicionado com sucesso");
     }
@@ -64,7 +59,7 @@ public class VeiculoUseCases{
         if(placa == null){
             throw new MissingException("placa");
         }else{
-            IVeiculo veiculo = frota.getVeiculoByPlaca(placa);
+            IVeiculo veiculo = Frota.getVeiculoByPlaca(placa);
             
             if(veiculo == null){
                 throw new InvalidException(placa);
@@ -73,7 +68,7 @@ public class VeiculoUseCases{
             if((veiculo.getStatus()).equals("locado")){
                 throw new CurrentlyRentedException(veiculo.getPlaca());
             }else{
-                frota.removeVeiculo(veiculo, motivo);
+                Frota.removeVeiculo(veiculo, motivo);
             }
             
         }
