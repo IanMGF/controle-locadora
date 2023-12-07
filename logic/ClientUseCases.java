@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class ClientUseCases {
-	private static ClientDatabase database;
+	private static IClientDatabase database;
 	public static ICliente encontrarPorCPF(String cpf){
 		return database.getClientsCopy()
 				.stream()
