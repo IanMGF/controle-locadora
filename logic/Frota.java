@@ -26,7 +26,7 @@ public class Frota{
         veiculos.stream()
                 .filter(v -> v.equals(veiculo))
                 .findFirst()
-                .ifPresent(v -> v.setStatus(motivo));
+                .ifPresent(v -> v.setStatus("indisponivel - " + motivo));
     }
 
     public static IVeiculo getVeiculoByPlaca(String placa) {

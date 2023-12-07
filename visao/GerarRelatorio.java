@@ -4,6 +4,8 @@
  */
 package visao;
 
+import logic.RelatorioUseCases;
+
 /**
  *
  * @author nat_p
@@ -157,7 +159,12 @@ public class GerarRelatorio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void botaoGerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoGerarRelatorioMouseClicked
-        // TODO add your handling code here:
+        boolean clients = jCheckBox1.isSelected();
+        boolean vehicles = jCheckBox2.isSelected();
+        boolean rents = jCheckBox3.isSelected();
+
+        String relatorio = RelatorioUseCases.getRelatorio(clients, vehicles, rents);
+        jTextArea1.insert(relatorio, 0);
     }//GEN-LAST:event_botaoGerarRelatorioMouseClicked
     
     

@@ -12,11 +12,11 @@ public class RelatorioUseCases {
         
         if(veiculo){
             IVeiculo[] veiculos = Frota.getVeiculos();
-            veiculoStr = "Relatorios de Clientes: \n";
+            veiculoStr = "Relatorios de Veículos: \n";
 
-            for(int i = 0; i < veiculos.length; i++){
-                veiculoStr = (veiculoStr + "Placa: " + veiculos[i].getPlaca() + "| Marca: " + veiculos[i].getMarca() + "| Modelo: " + veiculos[i].getModelo() + "| Cor: " + 
-                            veiculos[i].getCor() + "| Ano: " + veiculos[i].getAno() + "| logic.Grupo" + veiculos[i].getGrupo() + "| Status: " + veiculos[i].getStatus() + "\n");
+            for (IVeiculo iVeiculo : veiculos) {
+                veiculoStr = (veiculoStr + "Placa: " + iVeiculo.getPlaca() + "| Marca: " + iVeiculo.getMarca() + "| Modelo: " + iVeiculo.getModelo() + "| Cor: " +
+                        iVeiculo.getCor() + "| Ano: " + iVeiculo.getAno() + "| logic.Grupo" + iVeiculo.getGrupo() + "| Status: " + iVeiculo.getStatus() + "\n");
             }
         }
 
