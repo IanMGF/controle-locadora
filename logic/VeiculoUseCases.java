@@ -55,6 +55,8 @@ public class VeiculoUseCases{
 
         IVeiculo veiculo = new Veiculo(placa, marca, modelo, cor, ano, grupo, "disponivel");
         frota.addVeiculo(veiculo);
+
+        System.out.println("Veículo adicionado com sucesso");
     }
 
     public static void deleteVeiculo(String placa, String motivo) throws MissingException, CurrentlyRentedException, InvalidException{

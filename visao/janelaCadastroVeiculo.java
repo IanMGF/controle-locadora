@@ -4,6 +4,8 @@
  */
 package visao;
 
+import logic.VeiculoUseCases;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -68,7 +70,7 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
         jLabel5.setText("Ano");
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("logic.Grupo");
+        jLabel6.setText("Grupo");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         fecharJanelaCV.setText("Fechar");
@@ -228,9 +230,19 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String placa = escrevaPlaca.getText();
         String marca = jTextField2.getText();
+        String modelo = jTextField3.getText();
+        String cor = jTextField4.getText();
         String ano = jTextField5.getText();
-        // TODO: Converter ano em Date
         String grupo = jTextField6.getText();
+
+        VeiculoUseCases.newVeiculo(
+                placa,
+                marca,
+                modelo,
+                cor,
+                ano,
+                grupo
+        );
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fecharJanelaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaCVActionPerformed
