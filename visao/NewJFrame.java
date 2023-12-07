@@ -76,6 +76,11 @@ public class NewJFrame extends javax.swing.JFrame {
         menuGerente.add(gerarRelatorio);
 
         alterarParametros.setText("Alterar parâmetros operacionais");
+        alterarParametros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                alterarParametrosMouseClicked(evt);
+            }
+        });
         menuGerente.add(alterarParametros);
 
         setJMenuBar(menuGerente);
@@ -116,6 +121,12 @@ public class NewJFrame extends javax.swing.JFrame {
         jDesktopPane1.add(Relatorio);
         Relatorio.setVisible(true);
     }                                           
+
+    private void alterarParametrosMouseClicked(java.awt.event.MouseEvent evt) {                                               
+        AlterarParametros AlteracaoDeParametros = new AlterarParametros();
+        jDesktopPane1.add(AlteracaoDeParametros);
+        AlteracaoDeParametros.setVisible(true);
+    }                                              
 
     /**
      * @param args the command line arguments
