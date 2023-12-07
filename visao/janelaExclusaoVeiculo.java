@@ -4,6 +4,8 @@
  */
 package visao;
 
+import logic.VeiculoUseCases;
+
 /**
  *
  * @author nat_p
@@ -164,7 +166,7 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
         
         String placaEscrita = escrevaPlaca.getText();
         String motivoExclusaoV = motivoExclusao.getText();
-        veiculoPraExcluir.removeVeiculo(placaEscrita, motivoExclusaoV);
+        VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
     }                                              
 
     private void escrevaPlacaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {                                                    
