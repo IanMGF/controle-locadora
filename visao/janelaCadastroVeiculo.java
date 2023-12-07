@@ -4,6 +4,12 @@
  */
 package visao;
 
+import exceptions.AlreadyAddedExeception;
+import exceptions.InvalidException;
+import exceptions.MissingException;
+import logic.Frota;
+import logic.VeiculoUseCases;
+
 /**
  *
  * @author nat_p
@@ -221,8 +227,32 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-            System.exit(0);
+        String placa = escrevaPlaca.getText();
+        String marca = jTextField2.getText();
+        String modelo = jTextField3.getText();
+        String cor = jTextField4.getText();
+        String ano = jTextField5.getText();
+        String grupo = jTextField6.getText();
+
+        Frota.load();
+        try {
+            VeiculoUseCases.newVeiculo(
+                    placa,
+                    marca,
+                    modelo,
+                    cor,
+                    ano,
+                    grupo
+            );
+            dispose();
+        } catch (AlreadyAddedExeception e) {
+            // Adicionar mensagem de erro
+        } catch (InvalidException e) {
+            // Adicionar mensagem de erro - Campo inválido
+        } catch (MissingException e){
+            // Adicionar mensagem de erro - Campo não preenchido
+        }
+        Frota.save();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

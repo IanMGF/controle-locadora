@@ -4,6 +4,8 @@
  */
 package visao;
 
+import logic.VeiculoUseCases;
+
 /**
  *
  * @author nat_p
@@ -168,7 +170,7 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
         
         Exclusaopainel AlertaExclusao;
         AlertaExclusao = new Exclusaopainel();
-        NewJFrame.add(AlertaExclusao);
+        // NewJFrame.add(AlertaExclusao);
         AlertaExclusao.setVisible(true);
         
         //VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
