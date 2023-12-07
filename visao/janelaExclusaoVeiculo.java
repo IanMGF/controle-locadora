@@ -4,13 +4,11 @@
  */
 package visao;
 
-import logic.VeiculoUseCases;
-
 /**
  *
  * @author nat_p
  */
-
+import logic.*;
 public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
     
     //VeiculoUseCases veiculoPraExcluir = new VeiculoUseCases();
@@ -19,6 +17,7 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
      */
     public janelaExclusaoVeiculo() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -166,7 +165,12 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
         
         String placaEscrita = escrevaPlaca.getText();
         String motivoExclusaoV = motivoExclusao.getText();
-        VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
+        
+        AlertExclusao AlertaExclusao = new AlertExclusao();
+        jPanel1.add(AlertaExclusao);
+        AlertaExclusao.setVisible(true);
+        
+        //VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
     }                                              
 
     private void escrevaPlacaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {                                                    
