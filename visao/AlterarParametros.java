@@ -4,11 +4,13 @@
  */
 package visao;
 
+import logic.Grupo;
+
 /**
  *
  * @author nat_p
  */
-public class AlterarParametros extends javax.swing.JInternalFrame implements IGroup{
+public class AlterarParametros extends javax.swing.JInternalFrame{// implements IGroup{
     int valorDiaria = 10;
     int valorTanque = 20;
     int valorLimpezaExt = 30;
@@ -371,7 +373,7 @@ public class AlterarParametros extends javax.swing.JInternalFrame implements IGr
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        setValorDiaria(diariaBasico.getText());
+        Grupo.grupoBasico.setValorDiaria(Float.parseFloat(diariaBasico.getText()), "basico");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
