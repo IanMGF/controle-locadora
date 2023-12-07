@@ -1,10 +1,11 @@
-import Exceptions.CPFAlreadyRegisteredException;
-import Exceptions.InvalidCPFException;
-import Exceptions.NotOldEnoughException;
+package logic;
+
+import exceptions.CPFAlreadyRegisteredException;
+import exceptions.InvalidCPFException;
+import exceptions.NotOldEnoughException;
 
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.LinkedList;
 
 public class ClientUseCases {
 	private static ClientDatabase database;

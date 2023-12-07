@@ -5,7 +5,7 @@
 package visao;
 
 import javax.swing.JFrame;
-import javax.swing.*;
+
 public class NewJFrame extends javax.swing.JFrame {
 
     // Construtor 
@@ -19,7 +19,7 @@ public class NewJFrame extends javax.swing.JFrame {
     
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -96,24 +96,24 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void cadastrarNovoVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarNovoVeiculoMouseClicked
+    private void cadastrarNovoVeiculoMouseClicked(java.awt.event.MouseEvent evt) {                                                  
         // com essas 3 linhas de código dá pra instanciar múltiplas janelas
         janelaCadastroVeiculo telaCadastroNV = new janelaCadastroVeiculo();
         jDesktopPane1.add(telaCadastroNV);
         telaCadastroNV.setVisible(true);
-    }//GEN-LAST:event_cadastrarNovoVeiculoMouseClicked
+    }                                                 
 
-    private void excluirVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excluirVeiculoMouseClicked
+    private void excluirVeiculoMouseClicked(java.awt.event.MouseEvent evt) {                                            
         janelaExclusaoVeiculo telaExclusaoV = new janelaExclusaoVeiculo();
         jDesktopPane1.add(telaExclusaoV);
         telaExclusaoV.setVisible(true);
-    }//GEN-LAST:event_excluirVeiculoMouseClicked
+    }                                           
 
-    private void gerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gerarRelatorioMouseClicked
+    private void gerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {                                            
         // TODO add your handling code here:
-    }//GEN-LAST:event_gerarRelatorioMouseClicked
+    }                                           
 
     /**
      * @param args the command line arguments
@@ -150,12 +150,12 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JMenu alterarParametros;
     private javax.swing.JMenu cadastrarNovoVeiculo;
     private javax.swing.JMenu excluirVeiculo;
     private javax.swing.JMenu gerarRelatorio;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar menuGerente;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

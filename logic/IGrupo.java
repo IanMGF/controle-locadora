@@ -1,3 +1,5 @@
+package logic;
+
 public interface IGrupo {
 	float getValorDiaria(String nome);
 	void setValorDiaria(float valor, String nome);

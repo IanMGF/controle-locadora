@@ -1,3 +1,5 @@
+package logic;
+
 public interface IFrota {
 	IVeiculo[] getVeiculos();
 	void addVeiculo(IVeiculo veiculo);

@@ -1,3 +1,5 @@
+package logic;
+
 import java.util.LinkedList;
 
 public class Frota implements IFrota{

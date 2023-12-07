@@ -1,7 +1,9 @@
+package logic;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import Exceptions.*;
+import exceptions.*;
 
 public class VeiculoUseCases{
     

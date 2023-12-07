@@ -176,7 +176,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Grupo"/>
+            <Property name="text" type="java.lang.String" value="logic.Grupo"/>
             <Property name="verticalAlignment" type="int" value="1"/>
           </Properties>
         </Component>

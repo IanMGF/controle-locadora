@@ -1,3 +1,5 @@
+package logic;
+
 public class Veiculo implements IVeiculo{
     private final String placa;
     private final String marca;

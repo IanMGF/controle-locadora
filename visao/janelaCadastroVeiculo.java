@@ -4,12 +4,17 @@
  */
 package visao;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author nat_p
  */
 public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
-    //VeiculoUseCases veiculo = new VeiculoUseCases();
+    //logic.VeiculoUseCases veiculo = new logic.VeiculoUseCases();
     
     /**
      * Creates new form janelaCadastroVeiculo
@@ -63,7 +68,7 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
         jLabel5.setText("Ano");
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Grupo");
+        jLabel6.setText("logic.Grupo");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         fecharJanelaCV.setText("Fechar");
@@ -221,9 +226,11 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-            System.exit(0);
-
+        String placa = escrevaPlaca.getText();
+        String marca = jTextField2.getText();
+        String ano = jTextField5.getText();
+        // TODO: Converter ano em Date
+        String grupo = jTextField6.getText();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fecharJanelaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaCVActionPerformed

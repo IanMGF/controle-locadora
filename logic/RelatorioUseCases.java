@@ -1,3 +1,5 @@
+package logic;
+
 public class RelatorioUseCases {
     
     public static String getRelatorio(boolean clientes, boolean veiculo, boolean loc_res){
@@ -15,7 +17,7 @@ public class RelatorioUseCases {
 
             for(int i = 0; i < veiculos.length; i++){
                 veiculoStr = (veiculoStr + "Placa: " + veiculos[i].getPlaca() + "| Marca: " + veiculos[i].getMarca() + "| Modelo: " + veiculos[i].getModelo() + "| Cor: " + 
-                            veiculos[i].getCor() + "| Ano: " + veiculos[i].getAno() + "| Grupo" + veiculos[i].getGrupo() + "| Status: " + veiculos[i].getStatus() + "\n");
+                            veiculos[i].getCor() + "| Ano: " + veiculos[i].getAno() + "| logic.Grupo" + veiculos[i].getGrupo() + "| Status: " + veiculos[i].getStatus() + "\n");
             }
         }
 
