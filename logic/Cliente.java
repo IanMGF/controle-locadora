@@ -27,26 +27,41 @@ public class Cliente implements ICliente {
         this.celular = celular;
     }
 
+    /**
+     * @return Nome completo do cliente
+     */
     @Override
     public String getNomeCompleto() {
         return null;
     }
 
+    /**
+     * @return CPF do cliente
+     */
     @Override
     public String getCPF() {
         return null;
     }
 
+    /**
+     * @return Data de nascimento do cliente
+     */
     @Override
     public Date getNascimento() {
         return nascimento;
     }
 
+    /**
+     * @return Email do cliente
+     */
     @Override
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @return Número de telefone do cliente
+     */
     @Override
     public String getCelular() {
         return celular;
