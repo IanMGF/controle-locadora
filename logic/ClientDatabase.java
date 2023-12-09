@@ -11,21 +11,36 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe representando a base de dados de
+ */
 public class ClientDatabase {
     private static List<ICliente> clientList = new LinkedList<>();
 
+    /**
+     * @return Uma cópia da lista de clientes
+     */
     public static List<ICliente> getClientsCopy() {
         return new LinkedList<>(clientList);
     }
 
+    /**
+     * @param cliente O objeto referente ao cliente a ser adicionado
+     */
     public static void add(ICliente cliente) {
         clientList.add(cliente);
     }
 
+    /**
+     * @param cliente O objeto referente ao cliente a ser removido
+     */
     public static void remove(ICliente cliente) {
         clientList.remove(cliente);
     }
 
+    /**
+     * Salva a base de dados em um arquivo
+     */
     public static void saveToFile() {
         String fileName = "registro_clientes.txt";
         StringBuilder fileData = new StringBuilder();
@@ -59,6 +74,9 @@ public class ClientDatabase {
         }
     }
 
+    /**
+     * Carrega a base de dados de um arquivo
+     */
     public static void loadFromFile() {
         String fileName = "registro_clientes.txt";
 
