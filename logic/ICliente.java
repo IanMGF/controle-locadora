@@ -8,5 +8,4 @@ public interface ICliente {
 	Date getNascimento();
 	String getEmail();
 	String getCelular();
-	String getContato();
 }
