@@ -4,6 +4,9 @@
  */
 package visao;
 
+import logic.ClientDatabase;
+import logic.ClientUseCases;
+
 /**
  *
  * @author nat_p
@@ -193,8 +196,10 @@ public class CadastroNovoCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fecharJanelaCVActionPerformed
 
     private void botaoAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarClienteActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
+        ClientDatabase.loadFromFile();
+//        ClientUseCases.registrarNovoCliente(
+//
+//        );
     }//GEN-LAST:event_botaoAdicionarClienteActionPerformed
 
     private void CPFTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPFTextoActionPerformed
