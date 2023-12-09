@@ -11,17 +11,33 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
+/**
+ * A classe Frota gerencia uma lista de veículos e fornece métodos para adicionar, remover, buscar, salvar e carregar veículos.
+ */
 public class Frota{
     private final static LinkedList<IVeiculo> veiculos = new LinkedList<>();
 
+    /**
+     * Obtém a lista de veículos na frota.
+     * @return Um array contendo os veículos.
+     */
     public static IVeiculo[] getVeiculos() {
         return veiculos.toArray(IVeiculo[]::new);
     }
 
+    /**
+     * Adiciona um veículo à frota.
+     * @param veiculo O veículo a ser adicionado.
+     */
     public static void addVeiculo(IVeiculo veiculo) {
         veiculos.add(veiculo);
     }
 
+    /**
+     * Remove um veículo da frota.
+     * @param veiculo O veículo a ser removido.
+     * @param motivo O motivo da remoção.
+     */
     public static void removeVeiculo(IVeiculo veiculo, String motivo) {
         veiculos.stream()
                 .filter(v -> v.equals(veiculo))
@@ -29,13 +45,21 @@ public class Frota{
                 .ifPresent(v -> v.setStatus("indisponivel - " + motivo));
     }
 
+    /**
+     * Obtém um veículo com base na placa.
+     * @param placa A placa do veículo a ser obtido.
+     * @return O veículo com a placa especificada, ou null se não for encontrado.
+     */
     public static IVeiculo getVeiculoByPlaca(String placa) {
         return veiculos.stream()
-                        .filter(v -> v.getPlaca().equals(placa))
-                        .findFirst()
-                        .orElse(null);
+                .filter(v -> v.getPlaca().equals(placa))
+                .findFirst()
+                .orElse(null);
     }
 
+    /**
+     * Salva os dados dos veículos em um arquivo de texto.
+     */
     public static void save(){
         String fileName = "registro_veiculos.txt";
         StringBuilder fileData = new StringBuilder();
@@ -73,6 +97,9 @@ public class Frota{
         }
     }
 
+    /**
+     * Carrega os dados dos veículos a partir de um arquivo de texto.
+     */
     public static void load(){
         String fileName = "registro_veiculos.txt";
 
