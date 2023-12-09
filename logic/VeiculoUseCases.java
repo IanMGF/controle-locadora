@@ -6,9 +6,7 @@ import java.util.GregorianCalendar;
 import exceptions.*;
 
 public class VeiculoUseCases{
-    public static boolean validateVeiculo(String placa, String marca, String modelo, String cor, String ano, String grupo) throws MissingException, InvalidException, AlreadyAddedExeception{
-        Calendar cal = new GregorianCalendar();
-
+    public static boolean validatePlaca(String placa){
         //Checando strings
         if(placa == null){
             throw new MissingException("placa");
@@ -20,18 +18,35 @@ public class VeiculoUseCases{
             }
         }
 
+        return true;
+    }
+
+    public static boolean validateMarca(String marca){
         if(marca == null){
             throw new MissingException("marca");
         }
 
+        return true;
+    }
+
+    public static boolean validateModelo(String modelo){
         if(modelo == null){
             throw new MissingException("modelo");
         }
 
+        return true;
+    }
+
+    public static boolean validateCor(String cor){
         if(cor == null){
             throw new MissingException("cor");
         }
 
+        return true;
+    }
+
+    public static boolean validateAno(String ano){
+        Calendar cal = new GregorianCalendar();
         if(ano == null){
             throw new MissingException("ano");
         }
@@ -39,7 +54,10 @@ public class VeiculoUseCases{
         if(Integer.parseInt(ano) < 1886 || Integer.parseInt(ano) > cal.get(Calendar.YEAR)){
             throw new InvalidException("ano");
         }
+        return true;
+    }
 
+    public static boolean validateGrupo(String grupo){
         if(grupo == null){
             throw new MissingException("grupo");
         }
