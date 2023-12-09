@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.List;
+
 /**
  * A classe RelatorioUseCases é responsável por gerar relatórios com informações sobre clientes, veículos e locações/reservas.
  */
@@ -16,12 +18,18 @@ public class RelatorioUseCases {
         String clientesStr = "", veiculoStr = "", loc_resStr = "";
 
         if(clientes){
-            // TODO: adicionar informações sobre clientes
+            List<ICliente> clientList = ClientDatabase.getClientsCopy();
+            clientesStr = "Relatorios de Clientes (" + clientList.size() + " clientes registrados): \n";
+
+            for(ICliente client : clientList){
+                clientesStr = (clientesStr + "Nome: " + client.getNomeCompleto() + " | CPF: " + client.getCPF() + " | Data de nascimento: " + client.getNascimento() 
+                                + " | Email: " + client.getEmail() + " | Celular: " + client.getCelular() + "\n");
+            }
         }
 
         if(veiculo){
             IVeiculo[] veiculos = Frota.getVeiculos();
-            veiculoStr = "Relatorios de Veículos: \n";
+            veiculoStr = "Relatorios de Veículos(" + veiculos.length + " veículos na frota): \n";
 
             for (IVeiculo iVeiculo : veiculos) {
                 veiculoStr = (veiculoStr + "Placa: " + iVeiculo.getPlaca() + "| Marca: " + iVeiculo.getMarca() + "| Modelo: " + iVeiculo.getModelo() + "| Cor: " +
