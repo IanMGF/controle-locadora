@@ -3,55 +3,52 @@ package logic;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Date;
+import java.util.stream.Collectors;
 
+/**
+ * A classe ReservaUseCases fornece funcionalidades para gerenciar reservas de veículos.
+ */
 public class ReservaUseCases {
 	public List<IReserva> reservas;
 	public List<IReserva> reservasAtuais;
 
-	/*
-	Retorna uma lista de veículos disponíveis no período
-	*/
+	/**
+	 * Retorna uma lista de veículos disponíveis no período especificado.
+	 * @param dataInicial A data de início do período.
+	 * @param dataFinal A data de fim do período.
+	 * @return Uma lista de veículos disponíveis.
+	 */
 	public List<IVeiculo> encontrarVeiculosPorPeriodo(Date dataInicial, Date dataFinal){
-//		reservas.stream()
-//				.filter(res -> !res.getDataDevolucao().after(dataInicial))
-//				.filter(res -> !res.getDataRetirada().before(dataFinal))
-//				.
-
-		LinkedList<IVeiculo> returnList = new LinkedList<>();
-		for(IReserva reserva: reservas){
-			IVeiculo veiculo = reserva.getVeiculo();
-			reserva.getDataDevolucao();
-			if(reserva.getDataDevolucao().after(dataInicial)){
-				returnList.remove(veiculo);
-				continue;
-			}
-
-			if(reserva.getDataRetirada().before(dataFinal)){
-				returnList.remove(veiculo);
-				continue;
-			}
-
-			// Adiciona veículos
-			returnList.add(veiculo);
-		}
-
-		return returnList;
+		return reservas.stream()
+				.filter(res -> !res.getDataDevolucao().after(dataInicial))
+				.filter(res -> !res.getDataRetirada().before(dataFinal))
+				.map(IReserva::getVeiculo)
+				.collect(Collectors.toList());
 	}
 
-	/*
-	logic.Reserva um veículo, então, retorna o objeto, já adicionado na base de dados
-	*/
+	/**
+	 * Reserva um veículo e retorna o objeto de reserva, já adicionado na base de dados.
+	 * @param dataInicial A data de início da reserva.
+	 * @param dataFinal A data de fim da reserva.
+	 * @param veiculo O veículo a ser reservado.
+	 * @param limpezaInt Indica se a limpeza interna será realizada.
+	 * @param limpezaExt Indica se a limpeza externa será realizada.
+	 * @param seguro Indica se o seguro será incluído na reserva.
+	 * @return O objeto de reserva criado.
+	 */
 	public IReserva reservarVeiculo(
-		Date dataInicial,
-		Date dataFinal, 
-		IVeiculo veiculo, 
-		boolean limpezaInt,
-		boolean limpezaExt,
-		boolean seguro
+			Date dataInicial,
+			Date dataFinal,
+			IVeiculo veiculo,
+			boolean limpezaInt,
+			boolean limpezaExt,
+			boolean seguro
 	){
 		Grupo g = new Grupo("basico", 0, 0, 0, 0, 0);
 
-		int totalDias = 0; // Calcular total de dias
+		// Calcular total de dias
+		long totalDias = (dataFinal.getTime() - dataInicial.getTime()) / (1000 * 60 * 60 * 24);
+
 		float total;
 		total = 0;
 		total += g.getValorDiaria(veiculo.getGrupo()) * totalDias;
@@ -63,14 +60,14 @@ public class ReservaUseCases {
 		veiculo.getGrupo();
 		String codigo = ""; // => Gerar string aleatória
 		IReserva reserva = new Reserva(
-			veiculo,
-			dataInicial,
-			dataFinal,
-			limpezaInt,
-			limpezaExt,
-			total,
-			codigo,
-			seguro
+				veiculo,
+				dataInicial,
+				dataFinal,
+				limpezaInt,
+				limpezaExt,
+				total,
+				codigo,
+				seguro
 		);
 
 		reservasAtuais.add(reserva);
