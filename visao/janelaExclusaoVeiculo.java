@@ -4,22 +4,19 @@
  */
 package visao;
 
-import logic.VeiculoUseCases;
-
 /**
  *
  * @author nat_p
  */
 public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
-    
+
     //VeiculoUseCases veiculoPraExcluir = new VeiculoUseCases();
     /**
      * Creates new form janelaExclusaoVeiculo
      */
     public janelaExclusaoVeiculo() {
         initComponents();
-        
-       
+
     }
 
     /**
@@ -164,20 +161,17 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
 
     private void excluirVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirVeiculoActionPerformed
         // depois considerar o caso de não existir a placa
-        
+
         String placaEscrita = escrevaPlaca.getText();
         String motivoExclusaoV = motivoExclusao.getText();
+
         
-        Exclusaopainel AlertaExclusao;
-        AlertaExclusao = new Exclusaopainel();
-        // NewJFrame.add(AlertaExclusao);
-        AlertaExclusao.setVisible(true);
-        
+
         //VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
     }//GEN-LAST:event_excluirVeiculoActionPerformed
 
     private void escrevaPlacaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_escrevaPlacaInputMethodTextChanged
-        
+
     }//GEN-LAST:event_escrevaPlacaInputMethodTextChanged
 
 
