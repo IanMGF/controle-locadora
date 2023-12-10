@@ -53,7 +53,7 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
         PainelCTA = new javax.swing.JPanel();
         AdicionarVeiculoCTA = new javax.swing.JButton();
 
-        PainelPrincipal.setBackground(new java.awt.Color(204, 204, 204));
+        PainelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
         labelPlaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPlaca.setText("Placa:");
@@ -189,7 +189,7 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        PainelCTA.setBackground(new java.awt.Color(204, 204, 204));
+        PainelCTA.setBackground(new java.awt.Color(255, 255, 255));
 
         AdicionarVeiculoCTA.setLabel("Adicionar Veículo");
         AdicionarVeiculoCTA.addActionListener(new java.awt.event.ActionListener() {
