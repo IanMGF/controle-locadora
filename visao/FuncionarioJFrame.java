@@ -47,7 +47,7 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 712, Short.MAX_VALUE)
+            .addGap(0, 991, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,6 +100,11 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
         jMenuBar1.add(RetirarVeiculo);
 
         DevolverVeiculoLocado.setText("Devolver veículo locado");
+        DevolverVeiculoLocado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DevolverVeiculoLocadoMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(DevolverVeiculoLocado);
 
         setJMenuBar(jMenuBar1);
@@ -150,6 +155,12 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
         jDesktopPane1.add(telaRetirarVeiculo);
         telaRetirarVeiculo.setVisible(true);
     }//GEN-LAST:event_RetirarVeiculoMouseClicked
+
+    private void DevolverVeiculoLocadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DevolverVeiculoLocadoMouseClicked
+       DevolverVeiculoLocado telaDevolverVeiculo = new DevolverVeiculoLocado();
+        jDesktopPane1.add(telaDevolverVeiculo);
+        telaDevolverVeiculo.setVisible(true);
+    }//GEN-LAST:event_DevolverVeiculoLocadoMouseClicked
 
     /**
      * @param args the command line arguments
