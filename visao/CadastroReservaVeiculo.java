@@ -9,6 +9,8 @@ import logic.Frota;
 import logic.IVeiculo;
 import logic.ReservaUseCases;
 
+import visao.FuncionarioJFrame;
+
 import javax.swing.*;
 import java.text.DateFormat;
 import java.text.ParseException;
