@@ -3,16 +3,13 @@ package logic;
 import java.util.Date;
 
 public class Reserva implements IReserva {
-    private IVeiculo veiculo;
-    private ICliente cliente;
-    private Date dataInicial;
-    private Date dataFinal;
-    private boolean limpezaInt;
-    private boolean limpezaExt;
-    private float total;
-    private String codigo;
-    private boolean seguro;
-    private String status;
+    private final IVeiculo veiculo;
+    private final ICliente cliente;
+    private final Date dataInicial;
+    private final Date dataFinal;
+    private final float total;
+    private final String codigo;
+    private final String status;
 
     public Reserva(IVeiculo veiculo, Date dataInicial, Date dataFinal, float total, String codigo, String cpf, String status) {
         this.veiculo = veiculo;
@@ -37,14 +34,6 @@ public class Reserva implements IReserva {
         return dataFinal;
     }
 
-    public boolean getLimpezaInt() {
-        return limpezaInt;
-    }
-
-    public boolean getLimpezaExt() {
-        return limpezaExt;
-    }
-
     public float getValor() {
         return total;
     }
@@ -56,16 +45,11 @@ public class Reserva implements IReserva {
 
     @Override
     public ICliente getCliente() {
-        return null;
+        return cliente;
     }
 
     @Override
     public String getStatus() {
-        return null;
-    }
-
-    @Override
-    public boolean getSeguro() {
-        return seguro;
+        return status;
     }
 }

@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ReservaDatabase {
-    private static List<IReserva> reservas;
+    private static final List<IReserva> reservas = new LinkedList<>();
 
     /**
      * @return Uma cópia da lista de reservas
@@ -36,6 +36,14 @@ public class ReservaDatabase {
     public static void remove(IReserva reserva) {
         reservas.remove(reserva);
         saveToFile();
+    }
+
+    public static IReserva reservaByCodigo(String codigo){
+        loadFromFile();
+        return reservas.stream()
+                .filter(r -> r.getCodigo().equals(codigo))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -84,12 +92,16 @@ public class ReservaDatabase {
      * Carrega a base de dados de um arquivo
      */
     public static void loadFromFile() {
-        String fileName = "registro_clientes.txt";
+        String fileName = "registro_reservas.txt";
 
         reservas.clear();
 
         try {
             // Read all lines from the file
+            if (!Files.exists(Paths.get("registro_reservas.txt"))){
+                return;
+            }
+
             Files.lines(Paths.get(fileName)).forEach(line -> {
                 if (line.equals(""))
                     return;

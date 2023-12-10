@@ -17,13 +17,16 @@ public class ReservaUseCases {
 	 * @param dataFinal A data de fim do período.
 	 * @return Uma lista de veículos disponíveis.
 	 */
-	public List<IVeiculo> encontrarVeiculosPorPeriodo(Date dataInicial, Date dataFinal){
+	public static List<IVeiculo> encontrarVeiculosPorPeriodo(Date dataInicial, Date dataFinal){
+		List<IVeiculo> veiculosInicial = new LinkedList<>(List.of(Frota.getVeiculos()));
 
-		return ReservaDatabase.getReservasCopy().stream()
-				.filter(res -> !res.getDataDevolucao().after(dataInicial))
-				.filter(res -> !res.getDataRetirada().before(dataFinal))
-				.map(IReserva::getVeiculo)
-				.collect(Collectors.toList());
+		List<IVeiculo> reservados =  ReservaDatabase.getReservasCopy().stream()
+													.filter(res -> !res.getDataDevolucao().after(dataInicial))
+													.filter(res -> !res.getDataRetirada().before(dataFinal))
+													.map(IReserva::getVeiculo)
+													.toList();
+		veiculosInicial.removeAll(reservados);
+		return veiculosInicial;
 	}
 
 	/**
@@ -36,7 +39,7 @@ public class ReservaUseCases {
 	 * @param seguro Indica se o seguro será incluído na reserva.
 	 * @return O objeto de reserva criado.
 	 */
-	public IReserva reservarVeiculo(
+	public static IReserva reservarVeiculo(
 			Date dataInicial,
 			Date dataFinal,
 			IVeiculo veiculo,

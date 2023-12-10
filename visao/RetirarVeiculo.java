@@ -4,6 +4,11 @@
  */
 package visao;
 
+import logic.IReserva;
+import logic.ReservaDatabase;
+
+import javax.swing.*;
+
 /**
  *
  * @author nat_p
@@ -124,8 +129,46 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fecharJanelaActionPerformed
 
     private void botaoRetirarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRetirarVeiculoActionPerformed
-        // TODO add your handling code here:
-        
+        String codigoStr = codigoReserva.getText();
+
+        IReserva res = ReservaDatabase.reservaByCodigo(codigoStr);
+
+        JOptionPane.showOptionDialog(
+                null,
+                "Detalhes da reserva:" +
+                        "\nCPF do Cliente: " + res.getCliente().getCPF() +
+                        "\nRetirada: " + res.getDataRetirada() +
+                        "\nDevolução: " + res.getDataDevolucao() +
+                        "\n\nFavor confirmar a CNH do cliente.",
+                "Dados Reserva",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                null,
+                null
+        );
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Detalhes da reserva:" +
+                        "\nCPF do Cliente: " + res.getCliente().getCPF() +
+                        "\nRetirada: " + res.getDataRetirada() +
+                        "\nDevolução: " + res.getDataDevolucao() +
+                        "\n\nFavor conferir CNH do cliente",
+                "Dados Reserva",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Detalhes da reserva:" +
+                        "\nCPF do Cliente: " + res.getCliente().getCPF() +
+                        "\nRetirada: " + res.getDataRetirada() +
+                        "\nDevolução: " + res.getDataDevolucao() +
+                        "\n\nFavor conferir CNH do cliente",
+                "Dados Reserva",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }//GEN-LAST:event_botaoRetirarVeiculoActionPerformed
 
 

@@ -4,6 +4,19 @@
  */
 package visao;
 
+import logic.Frota;
+import logic.IVeiculo;
+import logic.ReservaUseCases;
+
+import javax.swing.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author nat_p
@@ -181,8 +194,100 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fecharJanelaActionPerformed
 
     private void CadastrarReservaVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarReservaVeiculoActionPerformed
-        // TODO add your handling code here:
-        
+        String dataDevStr = TextDataDevolucao.getText();
+        String dataRetStr = TextDataReitrada.getText();
+
+        Date dataRetirada;
+        Date dataDevolucao;
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            dataRetirada = df.parse(dataDevStr);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Formato inválido para data de retirada"
+            );
+            return;
+        }
+
+        try {
+            dataDevolucao = df.parse(dataDevStr);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Formato inválido para data de devolução"
+            );
+            return;
+        }
+
+        List<IVeiculo> disponiveis = ReservaUseCases.encontrarVeiculosPorPeriodo(dataRetirada, dataDevolucao);
+
+        StringBuilder grupos = new StringBuilder();
+        StringBuilder veiculosStr = new StringBuilder();
+
+        Set<String> gruposSet = disponiveis.stream()
+                                        .map(IVeiculo::getGrupo)
+                                        .collect(Collectors.toSet());
+
+        int grupoEscolhidoIndex = JOptionPane.showOptionDialog(
+                null,
+                "Selecione um dos grupos disponíveis",
+                "Selecione um grupo",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                gruposSet.toArray(),
+                null
+        );
+
+        String grupoEscolhido = gruposSet.toArray(String[]::new)[grupoEscolhidoIndex];
+
+        veiculosStr.append("Veículos disponíveis no período: \n");
+        disponiveis.stream()
+                .filter(v -> v.getGrupo().equals(grupoEscolhido))
+                .forEach(
+                v -> veiculosStr.append(v.getMarca())
+                        .append(" - ").append(v.getModelo())
+                        .append(" - ").append(v.getCor())
+                        .append(" - ").append(v.getAno())
+                        .append(" - ").append(v.getPlaca())
+                        .append(" - ").append(v.getGrupo())
+                        .append("\n")
+        );
+        veiculosStr.append("\nInforme a placa do veículo escolhido");
+
+        String placaEscolhida = "";
+        IVeiculo veiculo = null;
+
+        while(veiculo == null) {
+            placaEscolhida = JOptionPane.showInputDialog(
+                    veiculosStr.toString()
+            );
+            veiculo = Frota.getVeiculoByPlaca(placaEscolhida);
+        }
+
+        String cpf = JOptionPane.showInputDialog("Informe o CPF do cliente");
+
+        // TODO: Limpeza interna, Limpeza Externa, Seguro
+        ReservaUseCases.reservarVeiculo(
+                dataRetirada,
+                dataDevolucao,
+                veiculo,
+                cpf,
+                false,
+                false,
+                false
+        );
+
+        JOptionPane.showMessageDialog(
+                null,
+                veiculosStr.toString(),
+                "Reserva concluída",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
     }//GEN-LAST:event_CadastrarReservaVeiculoActionPerformed
 
     private void TextDataReitradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataReitradaActionPerformed
