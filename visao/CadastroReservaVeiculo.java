@@ -281,6 +281,9 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
 
             // fecha a janela
             dispose();
+            CadastroNovoCliente telaCadastronovocliente = new CadastroNovoCliente();
+            jDesktopPane1.add(telaCadastronovocliente);
+            telaCadastronovocliente.setVisible(true);
 
             // TODO: Aqui eu acho (?)
         }
