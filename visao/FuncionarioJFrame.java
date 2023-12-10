@@ -5,6 +5,7 @@
 package visao;
 
 import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  *
@@ -31,11 +32,12 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        CadastrarNovoCliente = new javax.swing.JMenu();
+        CadastrarReservaVeiculo = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        DevolverVeiculoLocado = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Painel Funcionario");
@@ -52,26 +54,50 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
             .addGap(0, 405, Short.MAX_VALUE)
         );
 
-        jMenu1.setLabel("Cadastrar novo cliente");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        CadastrarNovoCliente.setLabel("Cadastrar novo cliente");
+        CadastrarNovoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                CadastrarNovoClienteMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(CadastrarNovoCliente);
 
-        jMenu2.setText("Cadastrar reserva de veículo");
-        jMenuBar1.add(jMenu2);
+        CadastrarReservaVeiculo.setText("Cadastrar reserva de veículo");
+        CadastrarReservaVeiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastrarReservaVeiculoMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(CadastrarReservaVeiculo);
 
         jMenu3.setText("Cancelar reserva de veículo");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+
+        jMenuItem1.setText("Por não comparecimento");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Retirar veículo");
         jMenu4.setToolTipText("");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Devolver veículo locado");
-        jMenuBar1.add(jMenu5);
+        DevolverVeiculoLocado.setText("Devolver veículo locado");
+        jMenuBar1.add(DevolverVeiculoLocado);
 
         setJMenuBar(jMenuBar1);
 
@@ -89,11 +115,38 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        CadastroNovoVeiculo telaExclusaoV = new CadastroNovoVeiculo();
-        jDesktopPane1.add(telaExclusaoV);
-        telaExclusaoV.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
+    private void CadastrarNovoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastrarNovoClienteMouseClicked
+        CadastroNovoCliente telaCadastronovocliente = new CadastroNovoCliente();
+        jDesktopPane1.add(telaCadastronovocliente);
+        telaCadastronovocliente.setVisible(true);
+        
+        
+    }//GEN-LAST:event_CadastrarNovoClienteMouseClicked
+
+    private void CadastrarReservaVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastrarReservaVeiculoMouseClicked
+        CadastroReservaVeiculo telaCadastroReservaVeiculo = new CadastroReservaVeiculo();
+        jDesktopPane1.add(telaCadastroReservaVeiculo);
+        telaCadastroReservaVeiculo.setVisible(true);
+    }//GEN-LAST:event_CadastrarReservaVeiculoMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        CancelarReservaNComparecimento telaCancelarReservaNComparecimento = new CancelarReservaNComparecimento();
+        jDesktopPane1.add(telaCancelarReservaNComparecimento);
+        telaCancelarReservaNComparecimento.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        CancelarReservaVeiculo telaCancelarReservaVeiculo = new CancelarReservaVeiculo();
+        jDesktopPane1.add(telaCancelarReservaVeiculo);
+        telaCancelarReservaVeiculo.setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        RetirarVeiculo telaRetirarVeiculo = new RetirarVeiculo();
+        jDesktopPane1.add(telaRetirarVeiculo);
+        telaRetirarVeiculo.setVisible(true);
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -131,12 +184,13 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu CadastrarNovoCliente;
+    private javax.swing.JMenu CadastrarReservaVeiculo;
+    private javax.swing.JMenu DevolverVeiculoLocado;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
