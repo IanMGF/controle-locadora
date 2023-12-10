@@ -6,6 +6,8 @@ package visao;
 
 import logic.Grupo;
 
+import javax.swing.*;
+
 /**
  *
  * @author nat_p
@@ -373,7 +375,6 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Grupo.grupoBasico.setValorDiaria(Float.parseFloat(diariaBasico.getText()), "basico");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed

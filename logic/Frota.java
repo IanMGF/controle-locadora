@@ -51,6 +51,7 @@ public class Frota{
      * @return O veículo com a placa especificada, ou null se não for encontrado.
      */
     public static IVeiculo getVeiculoByPlaca(String placa) {
+        load();
         return veiculos.stream()
                 .filter(v -> v.getPlaca().equals(placa))
                 .findFirst()
@@ -89,7 +90,7 @@ public class Frota{
 
             try (FileWriter writer = new FileWriter(fileName)) {
                 writer.write(fileData.toString());
-                System.out.println("Data written to the file: " + fileName);
+                System.out.println("Salvando arquivo: " + fileName);
             }
 
         } catch (IOException e) {

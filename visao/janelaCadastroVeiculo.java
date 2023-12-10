@@ -8,7 +8,10 @@ import exceptions.AlreadyAddedExeception;
 import exceptions.InvalidException;
 import exceptions.MissingException;
 import logic.Frota;
+import logic.Veiculo;
 import logic.VeiculoUseCases;
+
+import javax.swing.*;
 
 /**
  *
@@ -241,21 +244,50 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         Frota.load();
         try {
-            VeiculoUseCases.newVeiculo(
-                    placa,
-                    marca,
-                    modelo,
-                    cor,
-                    ano,
-                    grupo
+            VeiculoUseCases.validatePlaca(placa);
+            VeiculoUseCases.validateMarca(marca);
+            VeiculoUseCases.validateModelo(modelo);
+            VeiculoUseCases.validateCor(cor);
+            VeiculoUseCases.validateAno(ano);
+            VeiculoUseCases.validateGrupo(grupo);
+
+            int confirmed = JOptionPane.showConfirmDialog(
+                    null,
+
+                    "Confirme os dados:\n" +
+                            "Placa: \t" + placa + "\n" +
+                            "Modelo: \t" + modelo + "\n" +
+                            "Marca: \t" + marca + "\n" +
+                            "Cor: \t" + cor + "\n" +
+                            "Ano: \t" + ano + "\n" +
+                            "Grupo: \t" + grupo + "\n",
+
+                    "Confirmação",
+                    JOptionPane.YES_NO_OPTION
             );
-            dispose();
+
+            if(confirmed == JOptionPane.YES_OPTION) {
+                VeiculoUseCases.newVeiculo(
+                        placa,
+                        marca,
+                        modelo,
+                        cor,
+                        ano,
+                        grupo
+                );
+
+                dispose();
+            }
         } catch (AlreadyAddedExeception e) {
-            // Adicionar mensagem de erro
-        } catch (InvalidException e) {
-            // Adicionar mensagem de erro - Campo inválido
-        } catch (MissingException e){
-            // Adicionar mensagem de erro - Campo não preenchido
+            JOptionPane.showMessageDialog(
+                    null, "Placa já está na frota",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (InvalidException | MissingException e) {
+            JOptionPane.showMessageDialog(
+                    null, e.getMessage() + " inválido(a)",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
         }
         Frota.save();
     }//GEN-LAST:event_AdicionarVeiculoCTAActionPerformed
@@ -278,7 +310,7 @@ public class janelaCadastroVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_escrevaAnoActionPerformed
 
     private void escrevaPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_escrevaPlacaKeyTyped
-        System.out.println("oi");
+
     }//GEN-LAST:event_escrevaPlacaKeyTyped
 
 

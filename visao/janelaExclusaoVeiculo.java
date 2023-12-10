@@ -4,7 +4,11 @@
  */
 package visao;
 
+import logic.Frota;
+import logic.IVeiculo;
 import logic.VeiculoUseCases;
+
+import javax.swing.*;
 
 /**
  *
@@ -167,9 +171,37 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
         String placaEscrita = escrevaPlaca.getText();
         String motivoExclusaoV = motivoExclusao.getText();
 
-        
-        VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
+        IVeiculo v = Frota.getVeiculoByPlaca(placaEscrita);
 
+        if(v.getStatus().equals("locado")){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "O veículo está atualmente locado. Para remove-lo por furto, registre uma devolução.",
+                    "Erro: Veículo locado",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            dispose();
+        }
+
+        int confirmed = JOptionPane.showConfirmDialog(
+                null,
+                "Veículo a ser excluido:" +
+                        "\nPlaca: " + v.getPlaca() +
+                        "\nMarca: " + v.getMarca() +
+                        "\nModelo: " + v.getModelo() +
+                        "\nCor: " + v.getCor() +
+                        "\nAno: " + v.getAno() +
+                        "\nGrupo: " + v.getGrupo() +
+                        "\n\nMotivo da exclusão: " + motivoExclusaoV,
+                "Confirme o veículo",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        if(confirmed == JOptionPane.YES_OPTION) {
+            VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
+            dispose();
+        }
         //VeiculoUseCases.deleteVeiculo(placaEscrita, motivoExclusaoV);
     }//GEN-LAST:event_excluirVeiculoActionPerformed
 

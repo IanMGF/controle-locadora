@@ -61,12 +61,12 @@ public class ClientDatabase {
         try {
             if (!Files.exists(Paths.get("registro_clientes.txt"))) {
                 Files.createFile(Paths.get(fileName));
-                System.out.println("File created: " + fileName);
+                System.out.println("Arquivo criado " + fileName);
             }
 
             try (FileWriter writer = new FileWriter(fileName)) {
                 writer.write(fileData.toString());
-                System.out.println("Data written to the file: " + fileName);
+                System.out.println("Salvando arquivo " + fileName);
             }
 
         } catch (IOException e) {

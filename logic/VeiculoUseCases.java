@@ -93,9 +93,17 @@ public class VeiculoUseCases{
             throw new MissingException("ano");
         }
 
-        if(Integer.parseInt(ano) < 1886 || Integer.parseInt(ano) > cal.get(Calendar.YEAR)){
+        int anoInt;
+        try {
+            anoInt = Integer.parseInt(ano);
+        } catch(NumberFormatException e){
             throw new InvalidException("ano");
         }
+
+        if(anoInt < 1886 || anoInt > cal.get(Calendar.YEAR)){
+            throw new InvalidException("ano");
+        }
+
         return true;
     }
 
@@ -170,6 +178,7 @@ public class VeiculoUseCases{
                 throw new CurrentlyRentedException(veiculo.getPlaca());
             }else{
                 Frota.removeVeiculo(veiculo, motivo);
+                Frota.save();
             }
 
         }
