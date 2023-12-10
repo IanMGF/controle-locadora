@@ -27,128 +27,103 @@ public class CancelarReservaNComparecimento extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        fecharJanelaCV = new javax.swing.JButton();
-        nomeCompleto = new javax.swing.JLabel();
+        fecharJanela = new javax.swing.JButton();
+        DataDesejada = new javax.swing.JLabel();
+        dataDesejada = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        CPFlabel = new javax.swing.JLabel();
-        CPFTexto = new javax.swing.JTextField();
-        CPFlabel1 = new javax.swing.JLabel();
-        Data = new javax.swing.JFormattedTextField();
-        CPFlabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        nomeCompleto1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        botaoAdicionarCliente = new javax.swing.JButton();
+        botaoCancelarReserva = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        fecharJanelaCV.setText("Fechar");
-        fecharJanelaCV.addActionListener(new java.awt.event.ActionListener() {
+        fecharJanela.setText("Fechar");
+        fecharJanela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fecharJanelaCVActionPerformed(evt);
+                fecharJanelaActionPerformed(evt);
             }
         });
 
-        nomeCompleto.setText("Nome completo:");
+        DataDesejada.setText("Data desejada");
 
-        CPFlabel.setText("CPF:");
-
-        CPFTexto.addActionListener(new java.awt.event.ActionListener() {
+        dataDesejada.setText("<DD/MM/AAAA>");
+        dataDesejada.setMinimumSize(new java.awt.Dimension(100, 22));
+        dataDesejada.setName(""); // NOI18N
+        dataDesejada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPFTextoActionPerformed(evt);
+                dataDesejadaActionPerformed(evt);
             }
         });
 
-        CPFlabel1.setText("Data de nascimento:");
+        jButton1.setText("Exibir reservas ativas nesta data:");
 
-        Data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        Data.addActionListener(new java.awt.event.ActionListener() {
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel1.setText("Reserva escolhida: ");
+
+        jTextField1.setMinimumSize(new java.awt.Dimension(100, 22));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DataActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
-
-        CPFlabel2.setText("email:");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        nomeCompleto1.setText("celular/telefone contato");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 562, Short.MAX_VALUE)
-                        .addComponent(fecharJanelaCV))
+                        .addGap(0, 568, Short.MAX_VALUE)
+                        .addComponent(fecharJanela))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nomeCompleto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(CPFlabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CPFTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nomeCompleto1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(CPFlabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(Data))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(CPFlabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(DataDesejada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(0, 229, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fecharJanelaCV)
+                .addComponent(fecharJanela)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeCompleto)
+                    .addComponent(DataDesejada)
+                    .addComponent(dataDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CPFlabel)
-                    .addComponent(CPFTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CPFlabel1)
-                    .addComponent(Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CPFlabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeCompleto1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        botaoAdicionarCliente.setText("Adicionar Cliente");
-        botaoAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+        botaoCancelarReserva.setText("Cancelar Reserva");
+        botaoCancelarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAdicionarClienteActionPerformed(evt);
+                botaoCancelarReservaActionPerformed(evt);
             }
         });
 
@@ -158,14 +133,14 @@ public class CancelarReservaNComparecimento extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAdicionarCliente)
+                .addComponent(botaoCancelarReserva)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAdicionarCliente)
+                .addComponent(botaoCancelarReserva)
                 .addContainerGap())
         );
 
@@ -188,43 +163,36 @@ public class CancelarReservaNComparecimento extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fecharJanelaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaCVActionPerformed
+    private void fecharJanelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaActionPerformed
         dispose();
         //fecha o formulário
-    }//GEN-LAST:event_fecharJanelaCVActionPerformed
+    }//GEN-LAST:event_fecharJanelaActionPerformed
 
-    private void botaoAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarClienteActionPerformed
+    private void botaoCancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarReservaActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_botaoAdicionarClienteActionPerformed
+    }//GEN-LAST:event_botaoCancelarReservaActionPerformed
 
-    private void CPFTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPFTextoActionPerformed
+    private void dataDesejadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataDesejadaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CPFTextoActionPerformed
+    }//GEN-LAST:event_dataDesejadaActionPerformed
 
-    private void DataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DataActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CPFTexto;
-    private javax.swing.JLabel CPFlabel;
-    private javax.swing.JLabel CPFlabel1;
-    private javax.swing.JLabel CPFlabel2;
-    private javax.swing.JFormattedTextField Data;
-    private javax.swing.JButton botaoAdicionarCliente;
-    private javax.swing.JButton fecharJanelaCV;
+    private javax.swing.JLabel DataDesejada;
+    private javax.swing.JButton botaoCancelarReserva;
+    private javax.swing.JFormattedTextField dataDesejada;
+    private javax.swing.JButton fecharJanela;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JLabel nomeCompleto;
-    private javax.swing.JLabel nomeCompleto1;
     // End of variables declaration//GEN-END:variables
 }
