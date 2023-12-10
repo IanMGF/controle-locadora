@@ -4,6 +4,17 @@
  */
 package visao;
 
+import exceptions.CPFAlreadyRegisteredException;
+import exceptions.InvalidCPFException;
+import exceptions.NotOldEnoughException;
+import logic.ClientUseCases;
+
+import javax.swing.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author nat_p
@@ -195,8 +206,62 @@ public class CadastroNovoCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fecharJanelaCVActionPerformed
 
     private void botaoAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarClienteActionPerformed
-        // TODO add your handling code here:
-        
+        String cpf = CPFTexto.getText();
+        String nome = jTextField1.getText();
+        String nascimentoStr = jFormattedTextField1.getText();
+        String email = jTextField2.getText();
+        String celular = jTextField3.getText();
+
+        String pattern = "dd/MM/yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        Date nascimento;
+
+        try {
+            nascimento = df.parse(nascimentoStr);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Data inválida. Use o formato <DD/MM/AAAA>",
+                    "Data Invalida",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        try {
+            ClientUseCases.validarInfo(cpf, nascimento, email);
+        } catch (CPFAlreadyRegisteredException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Esse CPF já está cadastrado.",
+                    "CPF Já cadastrado",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        } catch (InvalidCPFException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Esse CPF é inválido.",
+                    "CPF inválido",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        } catch (NotOldEnoughException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: O cliente não tem mais de 18 anos.",
+                    "Menor de idade",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        ClientUseCases.registrarNovoCliente(
+                nome,
+                cpf,
+                nascimento,
+                email,
+                celular
+        );
     }//GEN-LAST:event_botaoAdicionarClienteActionPerformed
 
     private void CPFTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPFTextoActionPerformed

@@ -104,8 +104,7 @@ public class ClientDatabase {
                             lines[0],
                             startDate,
                             lines[3],
-                            lines[4],
-                            ""
+                            lines[4]
                     );
 
                     add(cliente);

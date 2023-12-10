@@ -19,7 +19,7 @@ public class Cliente implements ICliente {
      * @param email Email do cliente
      * @param celular Telefone celular do cliente
      */
-    public Cliente(String nomeCompleto, String cpf, Date nascimento, String email, String celular, String contato){
+    public Cliente(String nomeCompleto, String cpf, Date nascimento, String email, String celular){
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.nascimento = nascimento;

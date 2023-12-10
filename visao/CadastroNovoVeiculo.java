@@ -193,8 +193,6 @@ public class CadastroNovoVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fecharJanelaCVActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void CPFTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPFTextoActionPerformed

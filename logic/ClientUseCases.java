@@ -8,6 +8,7 @@ import exceptions.InvalidCPFException;
 import exceptions.NotOldEnoughException;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class ClientUseCases {
@@ -35,7 +36,7 @@ public class ClientUseCases {
 	 * @throws InvalidCPFException Lançada quando o CPF é inválido.
 	 * @throws NotOldEnoughException Lançada quando o usuário não tem idade suficiente (18 anos).
 	 */
-	public static void validarInfo(String cpf, LocalDate dataDeNascimento, String email)
+	public static void validarInfo(String cpf, Date dataDeNascimento, String email)
 			throws CPFAlreadyRegisteredException, InvalidCPFException, NotOldEnoughException {
 		if (encontrarPorCPF(cpf) != null) {
 			throw new CPFAlreadyRegisteredException(cpf);
@@ -46,7 +47,8 @@ public class ClientUseCases {
 		}
 
 		LocalDate localDate = LocalDate.now();
-		boolean isOver18 = dataDeNascimento.plusYears(18).isBefore(localDate);
+		LocalDate localNascimento = dataDeNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		boolean isOver18 = localNascimento.plusYears(18).isBefore(localDate);
 		if (!isOver18) {
 			throw new NotOldEnoughException();
 		}
@@ -60,23 +62,20 @@ public class ClientUseCases {
 	 * @param nascimento A data de nascimento do cliente.
 	 * @param email O e-mail do cliente.
 	 * @param celular O número do celular do cliente.
-	 * @param contato As informações de contato do cliente.
 	 */
 	public static void registrarNovoCliente(
 			String nomeCompleto,
 			String cpf,
 			Date nascimento,
 			String email,
-			String celular,
-			String contato
+			String celular
 	) {
 		ICliente client = new Cliente(
 				nomeCompleto,
 				cpf,
 				nascimento,
 				email,
-				celular,
-				contato
+				celular
 		);
 
 		ClientDatabase.add(client);
