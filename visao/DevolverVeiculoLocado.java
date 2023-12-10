@@ -44,6 +44,9 @@ public class DevolverVeiculoLocado extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Placa:");
 
+        jTextField1.setText("<LLLNLNN>");
+        jTextField1.setMinimumSize(new java.awt.Dimension(100, 22));
+        jTextField1.setName(""); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
