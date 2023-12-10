@@ -73,6 +73,7 @@ public class CadastroNovoCliente extends javax.swing.JInternalFrame {
         nomeCompleto1.setText("celular/telefone contato");
 
         jFormattedTextField1.setText("<DD/MM/AAAA>");
+        jFormattedTextField1.setMinimumSize(new java.awt.Dimension(100, 22));
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextField1ActionPerformed(evt);
@@ -107,7 +108,7 @@ public class CadastroNovoCliente extends javax.swing.JInternalFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(CPFlabel1)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jFormattedTextField1))
+                                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(nomeCompleto)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
