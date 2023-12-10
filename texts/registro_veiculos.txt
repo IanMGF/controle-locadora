@@ -1,0 +1,15 @@
+ABC3E56	Chevrolet	Onix	vermelho	2023	premium	disponível
+XYZ9H42	Ford	Ka	azul	2022	basico	reservado
+PQR5I78	Volkswagen	Polo	preto	2021	padrao	disponível
+LMN2O89	Honda	Civic	prata	2023	premium	disponível
+UVW6R12	Renault	Kwid	branco	2022	basico	locado
+DEF4G23	Nissan	Versa	azul	2021	padrao	indisponível – furto
+GHI7J34	Ford	Fiesta	preto	2022	basico	disponível
+KLM1N56	Chevrolet	Cruze	cinza	2023	premium	indisponível – venda
+NOP8Q79	Honda	Fit	amarelo	2021	padrao	disponível
+RST2U91	Hyundai	HB20	verde	2022	basico	reservado
+VWX5Y23	Fiat	Uno	laranja	2023	basico	disponível
+ZAB6C78	Toyota	Etios	marrom	2022	basico	disponível
+CDE9F45	Volkswagen	Golf	branco	2021	padrao	disponível
+HIJ3K67	Renault	Sandero	prata	2023	premium	disponível
+LMN8O23	Fiat	Strada	preto	2022	basico	indisponível – furto

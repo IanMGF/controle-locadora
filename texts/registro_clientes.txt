@@ -1,0 +1,8 @@
+935.006.580-08	Maria da Silva	1995-08-20	maria.silva@gmail.com	11 98765-4321
+616.675.490-65	João Pereira	1980-02-10	joao.pereira@yahoo.com	21 99999-8888
+036.026.160-45	Camila Lima	1983-07-12	camila.lima@outlook.com	91 21098-7654
+185.374.910-98	Rafael Santos	1988-12-05	rafael.s@outlook.com	41 76543-2109
+301.943.100-00	Ana Oliveira	1990-04-25	ana.oliveira@gmail.com	51 65432-1098
+631.830.910-11	Lucas Martins	1985-09-18	lucas.martins@yahoo.com	61 54321-0987
+458.567.000-90	Amanda Costa	1993-03-08	amanda.c@hotmail.com	71 43210-9876
+077.649.550-00	Diego Silva	1977-11-30	diego.silva@gmail.com	81 32109-8765
