@@ -9,7 +9,7 @@ public interface IReserva {
 	float getValor();
 	String getCodigo();
 
-	ICliente getCliente();
+	String getCPF();
 
 	String getStatus();
 }

@@ -136,7 +136,7 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
         JOptionPane.showOptionDialog(
                 null,
                 "Detalhes da reserva:" +
-                        "\nCPF do Cliente: " + res.getCliente().getCPF() +
+                        "\nCPF do Cliente: " + res.getCPF() +
                         "\nRetirada: " + res.getDataRetirada() +
                         "\nDevolução: " + res.getDataDevolucao() +
                         "\n\nFavor confirmar a CNH do cliente.",
@@ -151,7 +151,7 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(
                 null,
                 "Detalhes da reserva:" +
-                        "\nCPF do Cliente: " + res.getCliente().getCPF() +
+                        "\nCPF do Cliente: " + res.getCPF() +
                         "\nRetirada: " + res.getDataRetirada() +
                         "\nDevolução: " + res.getDataDevolucao() +
                         "\n\nFavor conferir CNH do cliente",
@@ -162,7 +162,7 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(
                 null,
                 "Detalhes da reserva:" +
-                        "\nCPF do Cliente: " + res.getCliente().getCPF() +
+                        "\nCPF do Cliente: " + res.getCPF() +
                         "\nRetirada: " + res.getDataRetirada() +
                         "\nDevolução: " + res.getDataDevolucao() +
                         "\n\nFavor conferir CNH do cliente",

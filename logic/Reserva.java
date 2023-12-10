@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Reserva implements IReserva {
     private final IVeiculo veiculo;
-    private final ICliente cliente;
+    private final String cpf;
     private final Date dataInicial;
     private final Date dataFinal;
     private final float total;
@@ -18,7 +18,7 @@ public class Reserva implements IReserva {
         this.total = total;
         this.codigo = codigo;
         this.status = status;
-        this.cliente = ClientUseCases.encontrarPorCPF(cpf);
+        this.cpf = cpf;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class Reserva implements IReserva {
     }
 
     @Override
-    public ICliente getCliente() {
-        return cliente;
+    public String getCPF() {
+        return cpf;
     }
 
     @Override

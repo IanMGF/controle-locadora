@@ -203,7 +203,7 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            dataRetirada = df.parse(dataDevStr);
+            dataRetirada = df.parse(dataRetStr);
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(
                     null,

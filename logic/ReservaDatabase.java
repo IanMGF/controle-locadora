@@ -50,7 +50,7 @@ public class ReservaDatabase {
      * Salva a base de dados em um arquivo
      */
     public static void saveToFile() {
-        String fileName = "registro_clientes.txt";
+        String fileName = "registro_reservas.txt";
         StringBuilder fileData = new StringBuilder();
         String pattern = "yyyy-MM-dd";
         DateFormat df = new SimpleDateFormat(pattern);
@@ -58,16 +58,16 @@ public class ReservaDatabase {
         for(IReserva reserva: reservas){
             fileData.append(reserva.getCodigo());
             fileData.append('\t');
-            fileData.append(reserva.getCliente().getCPF());
+            fileData.append(reserva.getCPF());
             fileData.append('\t');
             fileData.append(reserva.getVeiculo().getPlaca());
             fileData.append('\t');
             fileData.append(df.format(reserva.getDataRetirada()));
             fileData.append('\t');
             fileData.append(df.format(reserva.getDataDevolucao()));
-            fileData.append('\n');
+            fileData.append('\t');
             fileData.append(reserva.getValor());
-            fileData.append('\n');
+            fileData.append('\t');
             fileData.append(reserva.getStatus());
             fileData.append('\n');
         }
@@ -93,6 +93,7 @@ public class ReservaDatabase {
      */
     public static void loadFromFile() {
         String fileName = "registro_reservas.txt";
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         reservas.clear();
 
@@ -107,12 +108,7 @@ public class ReservaDatabase {
                     return;
                 String[] lines = line.split("\t");
 
-                String startDateString = lines[2];
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                Date startDate;
                 try {
-                    startDate = df.parse(startDateString);
-
                     String id = lines[0];
                     String cpf = lines[1];
                     String placa = lines[2];
