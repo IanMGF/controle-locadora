@@ -4,6 +4,7 @@
  */
 package visao;
 
+import logic.ClientUseCases;
 import logic.Frota;
 import logic.IVeiculo;
 import logic.ReservaUseCases;
@@ -269,6 +270,20 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
         }
 
         String cpf = JOptionPane.showInputDialog("Informe o CPF do cliente");
+        if(ClientUseCases.encontrarPorCPF(cpf) == null){
+            // CPF Não encontrado.
+            JOptionPane.showMessageDialog(
+                    null,
+                    "CPF não encontrado. Redirecionando para cadastro de cliente",
+                    "CPF não encontrado",
+                    JOptionPane.ERROR_MESSAGE
+            );
+
+            // fecha a janela
+            dispose();
+
+            // TODO: Aqui eu acho (?)
+        }
 
         // TODO: Limpeza interna, Limpeza Externa, Seguro
         ReservaUseCases.reservarVeiculo(
