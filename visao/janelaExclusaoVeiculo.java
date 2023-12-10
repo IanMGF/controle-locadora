@@ -6,9 +6,11 @@ package visao;
 
 import logic.Frota;
 import logic.IVeiculo;
+import logic.Veiculo;
 import logic.VeiculoUseCases;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  *
@@ -173,6 +175,31 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
 
         IVeiculo v = Frota.getVeiculoByPlaca(placaEscrita);
 
+        if(placaEscrita.equals("")){
+            List<IVeiculo> veiculos = Frota.getVeiculosDisponiveis();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.append("Informe a placa de um dos veículos:\n\n");
+            veiculos.forEach(
+                    e -> sb.append(e.getPlaca())
+                            .append(" - ").append(e.getMarca())
+                            .append(" - ").append(e.getAno())
+                            .append(" - ").append(e.getModelo())
+                            .append(" - ").append(e.getCor())
+                            .append(" - ").append(e.getGrupo())
+                            .append("\n")
+            );
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    sb.toString(),
+                    "Listagem de veículos",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+
         if(v.getStatus().equals("locado")){
             JOptionPane.showMessageDialog(
                     null,
@@ -181,6 +208,7 @@ public class janelaExclusaoVeiculo extends javax.swing.JInternalFrame {
                     JOptionPane.ERROR_MESSAGE
             );
             dispose();
+            return;
         }
 
         int confirmed = JOptionPane.showConfirmDialog(

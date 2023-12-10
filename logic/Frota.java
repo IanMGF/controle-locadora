@@ -10,6 +10,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A classe Frota gerencia uma lista de veículos e fornece métodos para adicionar, remover, buscar, salvar e carregar veículos.
@@ -130,5 +132,11 @@ public class Frota{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<IVeiculo> getVeiculosDisponiveis() {
+        return veiculos .stream()
+                        .filter(v -> !v.getStatus().startsWith("indisponivel") && !v.getStatus().equals("locado"))
+                        .collect(Collectors.toList());
     }
 }
