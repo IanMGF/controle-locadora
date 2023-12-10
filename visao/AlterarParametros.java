@@ -7,6 +7,7 @@ package visao;
 import logic.Grupo;
 
 import javax.swing.*;
+import java.io.IOException;
 
 /**
  *
@@ -102,6 +103,12 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
             }
         });
 
+        try {
+            Grupo.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         label1.setText("Selecione os parâmetros que você deseja alterar");
 
         labelPlaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -121,8 +128,41 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
         jLabel5.setText("Valor diaria seguro");
 
         escrevaPlaca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        escrevaPlaca.setText(Integer.toString(valorDiaria)
+
+        // Diária do Premium
+        escrevaPlaca.setText(
+                Float.toString(Grupo.grupoPremium.getValorDiaria("premium"))
         );
+
+        // Diária do Padrão
+        escrevaPlaca1.setText(Float.toString(Grupo.grupoPadrao.getValorDiaria("padrao")));
+        // Diária do Básico
+        diariaBasico.setText(Float.toString(Grupo.grupoBasico.getValorDiaria("basico")));
+        // Tanque do premium
+        jTextField2.setText(Float.toString(Grupo.grupoBasico.getValorTanque("premium")));
+        // Limpeza Externa do premium
+        jTextField3.setText(Float.toString(Grupo.grupoBasico.getValorLimpezaExt("premium")));
+        // Limpeza interna do premium
+        jTextField4.setText(Float.toString(Grupo.grupoBasico.getValorLimpezaInt("premium")));
+        // Seguro do premium
+        jTextField5.setText(Float.toString(Grupo.grupoBasico.getDiariaSeguro("premium")));
+        // Tanque do padrão
+        jTextField6.setText(Float.toString(Grupo.grupoBasico.getValorTanque("padrao")));
+        // Limpeza Externa do padrão
+        jTextField7.setText(Float.toString(Grupo.grupoBasico.getValorLimpezaExt("padrao")));
+        // Limpeza interna do padrão
+        jTextField8.setText(Float.toString(Grupo.grupoBasico.getValorLimpezaInt("padrao")));
+        // Seguro do padrão
+        jTextField9.setText(Float.toString(Grupo.grupoBasico.getDiariaSeguro("padrao")));
+        // Tanque do basico
+        jTextField10.setText(Float.toString(Grupo.grupoBasico.getValorTanque("basico")));
+        // Limpeza Externa do basico
+        jTextField11.setText(Float.toString(Grupo.grupoBasico.getValorLimpezaExt("basico")));
+        // Limpeza interna do basico
+        jTextField12.setText(Float.toString(Grupo.grupoBasico.getValorLimpezaInt("basico")));
+        // Seguro do basico
+        jTextField13.setText(Float.toString(Grupo.grupoBasico.getDiariaSeguro("basico")));
+
         escrevaPlaca.setMinimumSize(new java.awt.Dimension(85, 22));
         escrevaPlaca.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
@@ -133,8 +173,7 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
         });
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText(Integer.toString(valorDiaria)
-        );
+
         jTextField2.setMinimumSize(new java.awt.Dimension(85, 22));
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -163,8 +202,6 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
         jLabel6.setText("Padrao");
 
         escrevaPlaca1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        escrevaPlaca1.setText(Integer.toString(valorDiaria)
-        );
         escrevaPlaca1.setMinimumSize(new java.awt.Dimension(85, 22));
         escrevaPlaca1.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
@@ -175,8 +212,6 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
         });
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setText(Integer.toString(valorDiaria)
-        );
         jTextField6.setMinimumSize(new java.awt.Dimension(85, 22));
 
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -199,8 +234,7 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
         });
 
         diariaBasico.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        diariaBasico.setText(Integer.toString(valorDiaria)
-        );
+
         diariaBasico.setMinimumSize(new java.awt.Dimension(85, 22));
         diariaBasico.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
@@ -211,8 +245,6 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
         });
 
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.setText(Integer.toString(valorDiaria)
-        );
         jTextField10.setMinimumSize(new java.awt.Dimension(85, 22));
 
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -374,7 +406,65 @@ public class AlterarParametros extends javax.swing.JInternalFrame{// implements 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        // Diária do Premium
+        float premiumDiariaValor = Float.parseFloat(escrevaPlaca.getText());
+        // Diária do Padrão
+        float padraoDiariaValor = Float.parseFloat(escrevaPlaca1.getText());
+        // Diária do Básico
+        float basicoDiariaValor = Float.parseFloat(diariaBasico.getText());
+        // Tanque do premium
+        float premiumTanqueValor = Float.parseFloat(jTextField2.getText());
+        // Limpeza Externa do premium
+        float premiumLimpezaExternaValor = Float.parseFloat(jTextField3.getText());
+        // Limpeza interna do premium
+        float premiumLimpezaInternaValor = Float.parseFloat(jTextField4.getText());
+        // Seguro do premium
+        float premiumSeguroValor = Float.parseFloat(jTextField5.getText());
+
+        // Tanque do padrão
+        float padraoTanqueValor = Float.parseFloat(jTextField6.getText());
+        // Limpeza Externa do padrão
+        float padraoLimpezaExternaValor = Float.parseFloat(jTextField7.getText());
+        // Limpeza interna do padrão
+        float padraoLimpezaInternaValor = Float.parseFloat(jTextField8.getText());
+        // Seguro do padrão
+        float padraoSeguroValor = Float.parseFloat(jTextField9.getText());
+
+        // Tanque do basico
+        float basicoTanqueValor = Float.parseFloat(jTextField10.getText());
+        // Limpeza Externa do basico
+        float basicoLimpezaExternaValor = Float.parseFloat(jTextField11.getText());
+        // Limpeza interna do basico
+        float basicoLimpezaInternaValor = Float.parseFloat(jTextField12.getText());
+        // Seguro do basico
+        float basicoSeguroValor = Float.parseFloat(jTextField13.getText());
+
+
+        Grupo.grupoBasico.setValorDiaria(basicoDiariaValor, "basico");
+        Grupo.grupoBasico.setValorLimpezaExt(basicoLimpezaExternaValor, "basico");
+        Grupo.grupoBasico.setValorLimpezaInt(basicoLimpezaInternaValor, "basico");
+        Grupo.grupoBasico.setValorTanque(basicoTanqueValor, "basico");
+        Grupo.grupoBasico.setDiariaSeguro(basicoSeguroValor, "basico");
+
+        Grupo.grupoPadrao.setValorDiaria(padraoDiariaValor, "padrao");
+        Grupo.grupoPadrao.setValorLimpezaExt(padraoLimpezaExternaValor, "padrao");
+        Grupo.grupoPadrao.setValorLimpezaInt(padraoLimpezaInternaValor, "padrao");
+        Grupo.grupoPadrao.setValorTanque(padraoTanqueValor, "padrao");
+        Grupo.grupoPadrao.setDiariaSeguro(padraoSeguroValor, "padrao");
+
+        Grupo.grupoPremium.setValorDiaria(premiumDiariaValor, "premium");
+        Grupo.grupoPremium.setValorLimpezaExt(premiumLimpezaExternaValor, "premium");
+        Grupo.grupoPremium.setValorLimpezaInt(premiumLimpezaInternaValor, "premium");
+        Grupo.grupoPremium.setValorTanque(premiumTanqueValor, "premium");
+        Grupo.grupoPremium.setDiariaSeguro(premiumSeguroValor, "premium");
+
+        try {
+            Grupo.save();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed

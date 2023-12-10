@@ -21,6 +21,7 @@ public class ClientDatabase {
      * @return Uma cópia da lista de clientes
      */
     public static List<ICliente> getClientsCopy() {
+        loadFromFile();
         return new LinkedList<>(clientList);
     }
 
@@ -29,6 +30,7 @@ public class ClientDatabase {
      */
     public static void add(ICliente cliente) {
         clientList.add(cliente);
+        saveToFile();
     }
 
     /**
@@ -36,6 +38,7 @@ public class ClientDatabase {
      */
     public static void remove(ICliente cliente) {
         clientList.remove(cliente);
+        saveToFile();
     }
 
     /**

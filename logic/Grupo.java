@@ -47,6 +47,33 @@ public class Grupo implements IGrupo{
                 padrao[i] = Float.parseFloat(padraoArray[i+1]);
                 premium[i] = Float.parseFloat(premiumArray[i+1]);
             }
+
+            grupoBasico = new Grupo(
+                    "basico",
+                    basico[0],
+                    basico[1],
+                    basico[2],
+                    basico[3],
+                    basico[4]
+            );
+
+            grupoPadrao = new Grupo(
+                    "padrao",
+                    padrao[0],
+                    padrao[1],
+                    padrao[2],
+                    padrao[3],
+                    padrao[4]
+            );
+
+            grupoPremium = new Grupo(
+                    "premium",
+                    premium[0],
+                    premium[1],
+                    premium[2],
+                    premium[3],
+                    premium[4]
+            );
             
             in.close();
     }

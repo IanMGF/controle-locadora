@@ -24,6 +24,7 @@ public class Frota{
      * @return Um array contendo os veículos.
      */
     public static IVeiculo[] getVeiculos() {
+        load();
         return veiculos.toArray(IVeiculo[]::new);
     }
 
@@ -135,6 +136,7 @@ public class Frota{
     }
 
     public static List<IVeiculo> getVeiculosDisponiveis() {
+        load();
         return veiculos .stream()
                         .filter(v -> !v.getStatus().startsWith("indisponivel") && !v.getStatus().equals("locado"))
                         .collect(Collectors.toList());

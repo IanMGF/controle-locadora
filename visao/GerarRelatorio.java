@@ -4,7 +4,10 @@
  */
 package visao;
 
+import exceptions.NotEnoughDataException;
 import logic.RelatorioUseCases;
+
+import javax.swing.*;
 
 /**
  *
@@ -162,9 +165,17 @@ public class GerarRelatorio extends javax.swing.JInternalFrame {
         boolean clients = jCheckBox1.isSelected();
         boolean vehicles = jCheckBox2.isSelected();
         boolean rents = jCheckBox3.isSelected();
-
-        String relatorio = RelatorioUseCases.getRelatorio(clients, vehicles, rents);
-        jTextArea1.insert(relatorio, 0);
+        try {
+            String relatorio = RelatorioUseCases.getRelatorio(clients, vehicles, rents);
+            jTextArea1.setText(relatorio);
+        } catch(NotEnoughDataException e){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Não há dados o suficiente para gerar relatório",
+                    "Erro: Não há dados o suficiente",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }//GEN-LAST:event_botaoGerarRelatorioMouseClicked
     
     
