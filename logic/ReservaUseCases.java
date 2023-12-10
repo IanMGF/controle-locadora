@@ -1,5 +1,6 @@
 package logic;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Date;
@@ -21,11 +22,12 @@ public class ReservaUseCases {
 		List<IVeiculo> veiculosInicial = new LinkedList<>(List.of(Frota.getVeiculos()));
 
 		List<IVeiculo> reservados =  ReservaDatabase.getReservasCopy().stream()
-													.filter(res -> !res.getDataDevolucao().after(dataInicial))
-													.filter(res -> !res.getDataRetirada().before(dataFinal))
+													.filter(res -> res.getDataDevolucao().after(dataInicial))
+													.filter(res -> res.getDataRetirada().before(dataFinal))
 													.map(IReserva::getVeiculo)
 													.toList();
-		veiculosInicial.removeAll(reservados);
+
+		veiculosInicial.removeIf(v -> reservados.stream().anyMatch(v2 -> v.getPlaca().equals(v2.getPlaca())));
 		return veiculosInicial;
 	}
 
@@ -48,6 +50,11 @@ public class ReservaUseCases {
 			boolean limpezaExt,
 			boolean seguro
 	){
+		try {
+			Grupo.load();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 		Grupo g = new Grupo("basico", 0, 0, 0, 0, 0);
 
 		// Calcular total de dias
@@ -71,8 +78,8 @@ public class ReservaUseCases {
 				dataFinal,
 				total,
 				codigo,
-				"ativa",
-				cpf
+				cpf,
+				"ativa"
 		);
 
 		ReservaDatabase.add(reserva);

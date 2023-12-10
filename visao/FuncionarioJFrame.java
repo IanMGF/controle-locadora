@@ -204,7 +204,7 @@ public class FuncionarioJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu CancelarReservaVeiculo;
     private javax.swing.JMenu DevolverVeiculoLocado;
     private javax.swing.JMenu RetirarVeiculo;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

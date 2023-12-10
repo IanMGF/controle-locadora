@@ -9,7 +9,7 @@ public class Reserva implements IReserva {
     private final Date dataFinal;
     private final float total;
     private final String codigo;
-    private final String status;
+    private String status;
 
     public Reserva(IVeiculo veiculo, Date dataInicial, Date dataFinal, float total, String codigo, String cpf, String status) {
         this.veiculo = veiculo;
@@ -51,5 +51,10 @@ public class Reserva implements IReserva {
     @Override
     public String getStatus() {
         return status;
+    }
+
+    @Override
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -151,8 +151,6 @@ public class VeiculoUseCases{
 
         IVeiculo veiculo = new Veiculo(placa, marca, modelo, cor, ano, grupo, "disponivel");
         Frota.addVeiculo(veiculo);
-
-        System.out.println("Veículo adicionado com sucesso");
     }
 
     /**

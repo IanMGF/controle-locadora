@@ -12,4 +12,6 @@ public interface IReserva {
 	String getCPF();
 
 	String getStatus();
+
+	void setStatus(String cancelada);
 }

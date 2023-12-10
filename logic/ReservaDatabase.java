@@ -34,7 +34,7 @@ public class ReservaDatabase {
      * @param reserva O objeto referente ao cliente a ser removido
      */
     public static void remove(IReserva reserva) {
-        reservas.remove(reserva);
+        reserva.setStatus("cancelada");
         saveToFile();
     }
 

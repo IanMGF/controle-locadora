@@ -4,6 +4,12 @@
  */
 package visao;
 
+import logic.IReserva;
+import logic.IVeiculo;
+import logic.ReservaDatabase;
+
+import javax.swing.*;
+
 /**
  *
  * @author nat_p
@@ -140,8 +146,35 @@ public class CancelarReservaVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fecharJanelaActionPerformed
 
     private void botaoAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarClienteActionPerformed
-        // TODO add your handling code here:
-        
+        String codigo = codigoReserva.getText();
+        IReserva res = ReservaDatabase.reservaByCodigo(codigo);
+        IVeiculo v = res.getVeiculo();
+        int procceed = JOptionPane.showConfirmDialog(
+                null,
+                "Reserva Código: " + codigo +
+                        "\n\nPlaca: " + v.getPlaca() +
+                        "\nModelo: " + v.getModelo() +
+                        "\nMarca: " + v.getMarca() +
+                        "\nCor: " + v.getCor() +
+                        "\n\nData de retirada: " + res.getDataRetirada() +
+                        "\nData de devolução: " + res.getDataDevolucao() +
+                        "\n\nValor: " + res.getValor() +
+                        "\n\n\nProsseguir com cancelamento?",
+                "Reserva encontrada",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        if(procceed == JOptionPane.OK_OPTION){
+            ReservaDatabase.remove(res);
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Reserva Cancelada",
+                    "Reserva Cancelada",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            dispose();
+        }
     }//GEN-LAST:event_botaoAdicionarClienteActionPerformed
 
     private void codigoReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoReservaActionPerformed

@@ -4,14 +4,12 @@
  */
 package visao;
 
-import logic.ClientUseCases;
-import logic.Frota;
-import logic.IVeiculo;
-import logic.ReservaUseCases;
+import logic.*;
 
 import visao.FuncionarioJFrame.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -227,12 +225,21 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
 
         List<IVeiculo> disponiveis = ReservaUseCases.encontrarVeiculosPorPeriodo(dataRetirada, dataDevolucao);
 
-        StringBuilder grupos = new StringBuilder();
         StringBuilder veiculosStr = new StringBuilder();
 
         Set<String> gruposSet = disponiveis.stream()
                                         .map(IVeiculo::getGrupo)
                                         .collect(Collectors.toSet());
+
+        if(gruposSet.size() == 0){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Nenhum veículo está disponível no período",
+                    "Nenhum Veículo encontrado",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
 
         int grupoEscolhidoIndex = JOptionPane.showOptionDialog(
                 null,
@@ -283,33 +290,58 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
 
             // fecha a janela
             dispose();
-            
-            //jDesktopPane1.add(telaCadastronovocliente);
-            //telaCadastronovocliente.setVisible(true);
 
-            Container container = SwingUtilities.getAncestorOfClass(JDesktopPane.class, (Component)event.getSource());
-
-            jDesktopPane1 desktop = (jDesktopPane1)container;
             CadastroNovoCliente telaCadastronovocliente = new CadastroNovoCliente();
-            desktop.add( telaCadastronovocliente );
+            FuncionarioJFrame.jDesktopPane1.add( telaCadastronovocliente );
             telaCadastronovocliente.setVisible(true);
-            // TODO: Aqui eu acho (?)
+            return;
         }
 
-        // TODO: Limpeza interna, Limpeza Externa, Seguro
-        ReservaUseCases.reservarVeiculo(
+        int limpezaExtOpt = JOptionPane.showConfirmDialog(
+                null,
+                "Gostaria de incluir limpeza externa?",
+                "Limpeza externa",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        int limpezaIntOpt = JOptionPane.showConfirmDialog(
+                null,
+                "Gostaria de incluir limpeza interna?",
+                "Limpeza interna",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        int seguroOpt = JOptionPane.showConfirmDialog(
+                null,
+                "Gostaria de incluir seguro?",
+                "Seguro",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        boolean limpezaInt = limpezaIntOpt == JOptionPane.YES_OPTION;
+        boolean limpezaExt = limpezaExtOpt == JOptionPane.YES_OPTION;
+        boolean seguro = seguroOpt == JOptionPane.YES_OPTION;
+
+        IReserva res = ReservaUseCases.reservarVeiculo(
                 dataRetirada,
                 dataDevolucao,
                 veiculo,
                 cpf,
-                false,
-                false,
-                false
+                limpezaInt,
+                limpezaExt,
+                seguro
         );
 
         JOptionPane.showMessageDialog(
                 null,
-                veiculosStr.toString(),
+                "Reserva concluída:\n" +
+                "Código: " + res.getCodigo() +
+                "Data retirada: " + res.getDataRetirada() +
+                "Data Devolução " + res.getDataDevolucao() +
+                "Placa: " + res.getVeiculo().getPlaca(),
                 "Reserva concluída",
                 JOptionPane.INFORMATION_MESSAGE
         );

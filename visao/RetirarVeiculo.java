@@ -129,8 +129,7 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fecharJanelaActionPerformed
 
     private void botaoRetirarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRetirarVeiculoActionPerformed
-        String codigoStr = codigoReserva.getText();
-
+        String codigoStr = jTextField1.getText();
         IReserva res = ReservaDatabase.reservaByCodigo(codigoStr);
 
         JOptionPane.showOptionDialog(
@@ -150,23 +149,8 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
 
         JOptionPane.showMessageDialog(
                 null,
-                "Detalhes da reserva:" +
-                        "\nCPF do Cliente: " + res.getCPF() +
-                        "\nRetirada: " + res.getDataRetirada() +
-                        "\nDevolução: " + res.getDataDevolucao() +
-                        "\n\nFavor conferir CNH do cliente",
-                "Dados Reserva",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-
-        JOptionPane.showMessageDialog(
-                null,
-                "Detalhes da reserva:" +
-                        "\nCPF do Cliente: " + res.getCPF() +
-                        "\nRetirada: " + res.getDataRetirada() +
-                        "\nDevolução: " + res.getDataDevolucao() +
-                        "\n\nFavor conferir CNH do cliente",
-                "Dados Reserva",
+                "Valor a ser pago: " + res.getValor(),
+                "Pagamento",
                 JOptionPane.INFORMATION_MESSAGE
         );
     }//GEN-LAST:event_botaoRetirarVeiculoActionPerformed

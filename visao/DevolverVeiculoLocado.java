@@ -4,6 +4,11 @@
  */
 package visao;
 
+import logic.ReservaDatabase;
+import logic.ReservaUseCases;
+
+import javax.swing.*;
+
 /**
  *
  * @author nat_p
@@ -132,7 +137,11 @@ public class DevolverVeiculoLocado extends javax.swing.JInternalFrame {
 
     private void botaoAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarClienteActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        String placa = jTextField1.getText();
+        JOptionPane.showMessageDialog(
+                null,
+                "Inspecione o veículo. Registre o nível de combustível."
+        );
     }//GEN-LAST:event_botaoAdicionarClienteActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

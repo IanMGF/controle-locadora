@@ -100,7 +100,6 @@ public class ClientDatabase {
                 try {
                     startDate = df.parse(startDateString);
                     String newDateString = df.format(startDate);
-                    System.out.println(newDateString);
                     Cliente cliente = new Cliente(
                             lines[1],
                             lines[0],
