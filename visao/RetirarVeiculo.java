@@ -27,28 +27,22 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        fecharJanelaCV = new javax.swing.JButton();
-        nomeCompleto = new javax.swing.JLabel();
+        fecharJanela = new javax.swing.JButton();
+        codigoReserva = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
-        botaoAdicionarCliente = new javax.swing.JButton();
+        botaoRetirarVeiculo = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        fecharJanelaCV.setText("Fechar");
-        fecharJanelaCV.addActionListener(new java.awt.event.ActionListener() {
+        fecharJanela.setText("Fechar");
+        fecharJanela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fecharJanelaCVActionPerformed(evt);
+                fecharJanelaActionPerformed(evt);
             }
         });
 
-        nomeCompleto.setText("Código da Reserva:");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        codigoReserva.setText("Código da Reserva:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -58,37 +52,33 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nomeCompleto)
+                        .addComponent(codigoReserva)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 291, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fecharJanelaCV, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 562, Short.MAX_VALUE)
+                        .addComponent(fecharJanela)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fecharJanelaCV)
+                .addComponent(fecharJanela)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeCompleto)
+                    .addComponent(codigoReserva)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        botaoAdicionarCliente.setText("Adicionar Cliente");
-        botaoAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+        botaoRetirarVeiculo.setText("Retirar Veiculo");
+        botaoRetirarVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAdicionarClienteActionPerformed(evt);
+                botaoRetirarVeiculoActionPerformed(evt);
             }
         });
 
@@ -98,14 +88,14 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAdicionarCliente)
+                .addComponent(botaoRetirarVeiculo)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAdicionarCliente)
+                .addComponent(botaoRetirarVeiculo)
                 .addContainerGap())
         );
 
@@ -128,25 +118,23 @@ public class RetirarVeiculo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fecharJanelaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaCVActionPerformed
+    private void fecharJanelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaActionPerformed
         dispose();
         //fecha o formulário
-    }//GEN-LAST:event_fecharJanelaCVActionPerformed
+    }//GEN-LAST:event_fecharJanelaActionPerformed
 
-    private void botaoAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarClienteActionPerformed
+    private void botaoRetirarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRetirarVeiculoActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_botaoAdicionarClienteActionPerformed
+    }//GEN-LAST:event_botaoRetirarVeiculoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoAdicionarCliente;
-    private javax.swing.JButton fecharJanelaCV;
+    private javax.swing.JButton botaoRetirarVeiculo;
+    private javax.swing.JLabel codigoReserva;
+    private javax.swing.JButton fecharJanela;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel nomeCompleto;
     // End of variables declaration//GEN-END:variables
 }
