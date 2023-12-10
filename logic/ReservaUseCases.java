@@ -3,14 +3,13 @@ package logic;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Date;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
  * A classe ReservaUseCases fornece funcionalidades para gerenciar reservas de veículos.
  */
 public class ReservaUseCases {
-	public List<IReserva> reservas;
-	public List<IReserva> reservasAtuais;
 
 	/**
 	 * Retorna uma lista de veículos disponíveis no período especificado.
@@ -19,7 +18,8 @@ public class ReservaUseCases {
 	 * @return Uma lista de veículos disponíveis.
 	 */
 	public List<IVeiculo> encontrarVeiculosPorPeriodo(Date dataInicial, Date dataFinal){
-		return reservas.stream()
+
+		return ReservaDatabase.getReservasCopy().stream()
 				.filter(res -> !res.getDataDevolucao().after(dataInicial))
 				.filter(res -> !res.getDataRetirada().before(dataFinal))
 				.map(IReserva::getVeiculo)
@@ -40,6 +40,7 @@ public class ReservaUseCases {
 			Date dataInicial,
 			Date dataFinal,
 			IVeiculo veiculo,
+			String cpf,
 			boolean limpezaInt,
 			boolean limpezaExt,
 			boolean seguro
@@ -58,19 +59,20 @@ public class ReservaUseCases {
 		total += limpezaInt ? g.getValorLimpezaInt(veiculo.getGrupo()) : 0;
 
 		veiculo.getGrupo();
-		String codigo = ""; // => Gerar string aleatória
+		Random random = new Random();
+		long randomLong = random.nextLong();
+		String codigo = Long.toString(randomLong); // => Gerar string aleatória
 		IReserva reserva = new Reserva(
 				veiculo,
 				dataInicial,
 				dataFinal,
-				limpezaInt,
-				limpezaExt,
 				total,
 				codigo,
-				seguro
+				"ativa",
+				cpf
 		);
 
-		reservasAtuais.add(reserva);
+		ReservaDatabase.add(reserva);
 		return reserva;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Reserva implements IReserva {
     private IVeiculo veiculo;
+    private ICliente cliente;
     private Date dataInicial;
     private Date dataFinal;
     private boolean limpezaInt;
@@ -11,16 +12,16 @@ public class Reserva implements IReserva {
     private float total;
     private String codigo;
     private boolean seguro;
+    private String status;
 
-    public Reserva(IVeiculo veiculo, Date dataInicial, Date dataFinal, boolean limpezaInt, boolean limpezaExt, float total, String codigo, boolean seguro) {
+    public Reserva(IVeiculo veiculo, Date dataInicial, Date dataFinal, float total, String codigo, String cpf, String status) {
         this.veiculo = veiculo;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
-        this.limpezaInt = limpezaInt;
-        this.limpezaExt = limpezaExt;
         this.total = total;
         this.codigo = codigo;
-        this.seguro = seguro;
+        this.status = status;
+        this.cliente = ClientUseCases.encontrarPorCPF(cpf);
     }
 
     @Override
@@ -51,6 +52,16 @@ public class Reserva implements IReserva {
     @Override
     public String getCodigo() {
         return codigo;
+    }
+
+    @Override
+    public ICliente getCliente() {
+        return null;
+    }
+
+    @Override
+    public String getStatus() {
+        return null;
     }
 
     @Override

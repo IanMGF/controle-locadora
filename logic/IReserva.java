@@ -11,4 +11,8 @@ public interface IReserva {
 	boolean getSeguro();
 	float getValor();
 	String getCodigo();
+
+	ICliente getCliente();
+
+	String getStatus();
 }
