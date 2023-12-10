@@ -9,7 +9,7 @@ import logic.Frota;
 import logic.IVeiculo;
 import logic.ReservaUseCases;
 
-import visao.FuncionarioJFrame;
+import visao.FuncionarioJFrame.*;
 
 import javax.swing.*;
 import java.text.DateFormat;
@@ -283,10 +283,16 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
 
             // fecha a janela
             dispose();
-            CadastroNovoCliente telaCadastronovocliente = new CadastroNovoCliente();
-            jDesktopPane1.add(telaCadastronovocliente);
-            telaCadastronovocliente.setVisible(true);
+            
+            //jDesktopPane1.add(telaCadastronovocliente);
+            //telaCadastronovocliente.setVisible(true);
 
+            Container container = SwingUtilities.getAncestorOfClass(JDesktopPane.class, (Component)event.getSource());
+
+            jDesktopPane1 desktop = (jDesktopPane1)container;
+            CadastroNovoCliente telaCadastronovocliente = new CadastroNovoCliente();
+            desktop.add( telaCadastronovocliente );
+            telaCadastronovocliente.setVisible(true);
             // TODO: Aqui eu acho (?)
         }
 
