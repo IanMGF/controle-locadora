@@ -216,6 +216,56 @@ public class CadastroNovoCliente extends javax.swing.JInternalFrame {
         DateFormat df = new SimpleDateFormat(pattern);
         Date nascimento;
 
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Nome não preenchido.",
+                    "Dados não preenchidos",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        if (cpf.equals("")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: CPF não preenchido.",
+                    "Dados não preenchidos",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        if (nascimentoStr.equals("")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Data de nascimento não preenchida.",
+                    "Dados não preenchidos",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        if (email.equals("")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Email não preenchido.",
+                    "Dados não preenchidos",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        if (celular.equals("")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro: Celular não preenchido.",
+                    "Dados não preenchidos",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
         try {
             nascimento = df.parse(nascimentoStr);
         } catch (ParseException e) {
@@ -262,6 +312,15 @@ public class CadastroNovoCliente extends javax.swing.JInternalFrame {
                 email,
                 celular
         );
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Cadastro realizado com sucesso",
+                "Cadastro realizado",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        dispose();
     }//GEN-LAST:event_botaoAdicionarClienteActionPerformed
 
     private void CPFTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPFTextoActionPerformed

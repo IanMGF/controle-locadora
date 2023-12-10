@@ -6,11 +6,11 @@ import java.util.Date;
  * Classe que um Cliente
  */
 public class Cliente implements ICliente {
-    private String nomeCompleto;
-    private String cpf;
-    private Date nascimento;
-    private String email;
-    private String celular;
+    private final String nomeCompleto;
+    private final String cpf;
+    private final Date nascimento;
+    private final String email;
+    private final String celular;
 
     /**
      * @param nomeCompleto Nome completo do cliente
@@ -32,7 +32,7 @@ public class Cliente implements ICliente {
      */
     @Override
     public String getNomeCompleto() {
-        return null;
+        return nomeCompleto;
     }
 
     /**
@@ -40,7 +40,7 @@ public class Cliente implements ICliente {
      */
     @Override
     public String getCPF() {
-        return null;
+        return cpf;
     }
 
     /**

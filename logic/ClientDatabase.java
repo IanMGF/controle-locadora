@@ -3,6 +3,7 @@ package logic;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,6 +47,7 @@ public class ClientDatabase {
      */
     public static void saveToFile() {
         String fileName = "registro_clientes.txt";
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         StringBuilder fileData = new StringBuilder();
 
         for(ICliente cliente: clientList){
@@ -53,7 +55,7 @@ public class ClientDatabase {
             fileData.append('\t');
             fileData.append(cliente.getNomeCompleto());
             fileData.append('\t');
-            fileData.append(cliente.getNascimento());
+            fileData.append(df.format(cliente.getNascimento()));
             fileData.append('\t');
             fileData.append(cliente.getEmail());
             fileData.append('\t');
@@ -112,6 +114,8 @@ public class ClientDatabase {
                     e.printStackTrace();
                 }
             });
+
+        } catch(NoSuchFileException ignored){
 
         } catch (IOException e) {
             e.printStackTrace();
