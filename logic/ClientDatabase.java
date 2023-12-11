@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,7 +47,7 @@ public class ClientDatabase {
      * Salva a base de dados em um arquivo
      */
     public static void saveToFile() {
-        String fileName = "registro_clientes.txt";
+        String fileName = "texts/registro_clientes.txt";
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         StringBuilder fileData = new StringBuilder();
 
@@ -64,7 +65,7 @@ public class ClientDatabase {
         }
 
         try {
-            if (!Files.exists(Paths.get("registro_clientes.txt"))) {
+            if (!Files.exists(Paths.get(fileName))) {
                 Files.createFile(Paths.get(fileName));
                 System.out.println("Arquivo criado " + fileName);
             }
@@ -83,7 +84,7 @@ public class ClientDatabase {
      * Carrega a base de dados de um arquivo
      */
     public static void loadFromFile() {
-        String fileName = "registro_clientes.txt";
+        String fileName = "texts/registro_clientes.txt";
 
         clientList.clear();
 

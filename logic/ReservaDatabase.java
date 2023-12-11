@@ -3,6 +3,7 @@ package logic;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -50,7 +51,7 @@ public class ReservaDatabase {
      * Salva a base de dados em um arquivo
      */
     public static void saveToFile() {
-        String fileName = "registro_reservas.txt";
+        String fileName = "texts/registro_reservas.txt";
         StringBuilder fileData = new StringBuilder();
         String pattern = "yyyy-MM-dd";
         DateFormat df = new SimpleDateFormat(pattern);
@@ -73,8 +74,9 @@ public class ReservaDatabase {
         }
 
         try {
-            if (!Files.exists(Paths.get("registro_reservas.txt"))) {
-                Files.createFile(Paths.get(fileName));
+            Path path = Paths.get(fileName);
+            if (!Files.exists(path)) {
+                Files.createFile(path);
                 System.out.println("Arquivo criado " + fileName);
             }
 
@@ -92,18 +94,19 @@ public class ReservaDatabase {
      * Carrega a base de dados de um arquivo
      */
     public static void loadFromFile() {
-        String fileName = "registro_reservas.txt";
+        String fileName = "texts/registro_reservas.txt";
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         reservas.clear();
 
         try {
             // Read all lines from the file
-            if (!Files.exists(Paths.get("registro_reservas.txt"))){
+            Path path = Paths.get(fileName);
+            if (!Files.exists(path)){
                 return;
             }
 
-            Files.lines(Paths.get(fileName)).forEach(line -> {
+            Files.lines(path).forEach(line -> {
                 if (line.equals(""))
                     return;
                 String[] lines = line.split("\t");

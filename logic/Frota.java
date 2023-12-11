@@ -65,7 +65,7 @@ public class Frota{
      * Salva os dados dos veículos em um arquivo de texto.
      */
     public static void save(){
-        String fileName = "registro_veiculos.txt";
+        String fileName = "texts/registro_veiculos.txt";
         StringBuilder fileData = new StringBuilder();
 
         for(IVeiculo veiculo: veiculos){
@@ -105,7 +105,7 @@ public class Frota{
      * Carrega os dados dos veículos a partir de um arquivo de texto.
      */
     public static void load(){
-        String fileName = "registro_veiculos.txt";
+        String fileName = "texts/registro_veiculos.txt";
 
         veiculos.clear();
 
