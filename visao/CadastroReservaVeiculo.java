@@ -255,7 +255,7 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
             dispose();
 
             CadastroNovoCliente telaCadastronovocliente = new CadastroNovoCliente();
-            FuncionarioJFrame.jDesktopPane1.add( telaCadastronovocliente );
+            ModuloFuncionario.jDesktopPane1.add( telaCadastronovocliente );
             telaCadastronovocliente.setVisible(true);
             return;
         }
@@ -275,7 +275,7 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE
         );
-        
+
         int seguroOpt = JOptionPane.showConfirmDialog(
                 null,
                 "Gostaria de incluir seguro? (Obrigatório para clientes entre 18 e 21 anos)",
