@@ -6,10 +6,7 @@ package visao;
 
 import logic.*;
 
-import visao.FuncionarioJFrame.*;
-
 import javax.swing.*;
-import java.awt.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,20 +44,13 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
         TextDataReitrada = new javax.swing.JFormattedTextField();
         TextDataDevolucao = new javax.swing.JFormattedTextField();
         grupoVeiculosDisponiveis = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        opcaoDesejada = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         CadastrarReservaVeiculo = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         fecharJanela.setText("Fechar");
-        fecharJanela.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fecharJanelaActionPerformed(evt);
-            }
-        });
+        fecharJanela.addActionListener(this::fecharJanelaActionPerformed);
 
         jLabel1.setText("Data de retirada:");
 
@@ -69,27 +59,11 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
         TextDataReitrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         TextDataReitrada.setText("<DD/MM/AAAA>");
         TextDataReitrada.setToolTipText("<DD/MM/AAAA>");
-        TextDataReitrada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextDataReitradaActionPerformed(evt);
-            }
-        });
+        TextDataReitrada.addActionListener(this::TextDataReitradaActionPerformed);
 
         TextDataDevolucao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         TextDataDevolucao.setText("<DD/MM/AAAA>");
         TextDataDevolucao.setToolTipText("<DD/MM/AAAA>");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        grupoVeiculosDisponiveis.setViewportView(jTextArea1);
-
-        jLabel3.setText("Selecione a opção desejada:");
-
-        opcaoDesejada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcaoDesejadaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,11 +90,7 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(grupoVeiculosDisponiveis))
                         .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(opcaoDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    ))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +106,6 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(TextDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(opcaoDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(grupoVeiculosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -147,11 +114,7 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         CadastrarReservaVeiculo.setText("Próximo ->");
-        CadastrarReservaVeiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadastrarReservaVeiculoActionPerformed(evt);
-            }
-        });
+        CadastrarReservaVeiculo.addActionListener(this::CadastrarReservaVeiculoActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -189,12 +152,12 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fecharJanelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharJanelaActionPerformed
+    private void fecharJanelaActionPerformed(java.awt.event.ActionEvent ignoredEvt) {//GEN-FIRST:event_fecharJanelaActionPerformed
         dispose();
         //fecha o formulário
     }//GEN-LAST:event_fecharJanelaActionPerformed
 
-    private void CadastrarReservaVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarReservaVeiculoActionPerformed
+    private void CadastrarReservaVeiculoActionPerformed(java.awt.event.ActionEvent ignoredEvt) {//GEN-FIRST:event_CadastrarReservaVeiculoActionPerformed
         String dataDevStr = TextDataDevolucao.getText();
         String dataRetStr = TextDataReitrada.getText();
 
@@ -268,7 +231,7 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
         );
         veiculosStr.append("\nInforme a placa do veículo escolhido");
 
-        String placaEscolhida = "";
+        String placaEscolhida;
         IVeiculo veiculo = null;
 
         while(veiculo == null) {
@@ -348,14 +311,9 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_CadastrarReservaVeiculoActionPerformed
 
-    private void TextDataReitradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataReitradaActionPerformed
+    private void TextDataReitradaActionPerformed(java.awt.event.ActionEvent ignoredEvt) {//GEN-FIRST:event_TextDataReitradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextDataReitradaActionPerformed
-
-    private void opcaoDesejadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoDesejadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opcaoDesejadaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastrarReservaVeiculo;
@@ -365,10 +323,7 @@ public class CadastroReservaVeiculo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane grupoVeiculosDisponiveis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField opcaoDesejada;
     // End of variables declaration//GEN-END:variables
 }
